@@ -16,6 +16,21 @@
     <a id="skip-to-content" href="#content">Skip to the content.</a>
 
     <header class="page-header" role="banner">
+      <nav class="main-nav">
+  <ul class="menu">
+    <li><a href="/">Home</a></li>
+    <li class="dropdown">
+      <a href="#">Progetto ▼</a>
+      <ul class="dropdown-content">
+        <li><a href="/index.html">Index</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul>
+    </li>
+    <li><a href="/docs.html">Docs</a></li>
+  </ul>
+</nav>
+
       <h1 class="project-name">{{ page.title | default: site.title | default: site.github.repository_name }}</h1>
       <h2 class="project-tagline">{{ page.description | default: site.description | default: site.github.project_tagline }}</h2>
       {% if site.github.is_project_page %}
