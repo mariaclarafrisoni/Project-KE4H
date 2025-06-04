@@ -1,6 +1,3 @@
----
-layout: default
----
 
 # Project KE4H: Knowledge Graph Enrichment
 
