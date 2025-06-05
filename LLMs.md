@@ -1,6 +1,7 @@
 ---
 layout: default
 title: LLMs
+permalink: /llms/
 ---
 
 # LLMs
