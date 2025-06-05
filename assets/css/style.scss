@@ -1,4 +1,4 @@
-@import 'jekyll-theme-cayman';
+/* @import 'jekyll-theme-cayman'; */
 
 .page-header {
   width: 100%;
@@ -18,24 +18,27 @@
 
 .top-nav {
   display: flex;
-  justify-content: space-around; /* Centra il menu orizzontalmente */
-  gap: 30px; /* Spazio tra i link */
-  background-color: white; /* Sfondo bianco */
-  padding: 10px 0;
-  border-bottom: 1px solid #ccc; /* Una linea leggera sotto il menu */
+  justify-content: space-between;
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 10px 20px;
+  border-bottom: 1px solid #ccc;
+  box-sizing: border-box;
 }
 
 .top-nav a {
-  color: green; /* Colore verde */
+  color: #228B22;
   text-decoration: none;
   font-weight: 600;
-  padding: 8px 15px;
+  padding: 8px 20px;
   border-radius: 5px;
   transition: background-color 0.3s ease;
+  white-space: nowrap;
 }
 
 .top-nav a:hover {
-  background-color: #e0f0d9; /* Un verde chiaro al passaggio del mouse */
+  background-color: #e0f0d9;
 }
 
 .main-content {
@@ -47,5 +50,6 @@
   font-family: Arial, sans-serif;
   line-height: 1.5;
 }
+
 
 
