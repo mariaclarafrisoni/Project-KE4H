@@ -18,29 +18,24 @@
 
 .top-nav {
   display: flex;
-  justify-content: center;
-  gap: 30px;
-  background-color: #fff;
-  border-top: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
-  padding: 15px 10px;
-  box-sizing: border-box;
-  flex-wrap: wrap;
+  justify-content: space-around; /* Centra il menu orizzontalmente */
+  gap: 30px; /* Spazio tra i link */
+  background-color: white; /* Sfondo bianco */
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc; /* Una linea leggera sotto il menu */
 }
 
 .top-nav a {
-  color: #228B22;
-  font-weight: 600;
+  color: green; /* Colore verde */
   text-decoration: none;
-  padding: 10px 20px;
-  border-radius: 6px;
-  background-color: #f9f9f9;
-  box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
-  transition: background-color 0.2s ease;
+  font-weight: 600;
+  padding: 8px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
 }
 
 .top-nav a:hover {
-  background-color: #e0e0e0;
+  background-color: #e0f0d9; /* Un verde chiaro al passaggio del mouse */
 }
 
 .main-content {
