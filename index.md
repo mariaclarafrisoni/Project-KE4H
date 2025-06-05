@@ -2,7 +2,7 @@
 layout: default
 ---
 
-# Project KE4H: Knowledge Graph Enrichment
+# Unlocking Fénis: prompting the past with LLMs, enriching the present with ArCo
 
 In this project, we explored the ontology of the [ARCO knowledge graph](https://w3id.org/arco) to investigate how cultural heritage data is represented. Using SPARQL queries, we examined classes and properties related to historical buildings and monuments.
 
