@@ -35,5 +35,26 @@
   flex: 1;
 }
 
+.custom-header {
+  background-color: #ffffff;
+  padding: 30px 20px 10px;
+  text-align: center;
+  border-bottom: 2px solid #157878;
+}
+
+.custom-header h1 {
+  margin: 0;
+  font-size: 2.2em;
+  color: #157878;
+  font-family: 'Arial', sans-serif;
+}
+
+.custom-header .subtitle {
+  margin-top: 8px;
+  color: #555;
+  font-size: 1.1em;
+  font-style: italic;
+}
+
 
 @import 'jekyll-theme-cayman';
