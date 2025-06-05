@@ -1,6 +1,5 @@
 @import 'jekyll-theme-cayman';
 
-/* HEADER */
 .page-header {
   width: 100%;
   background-color: #fff;
@@ -10,31 +9,30 @@
   text-align: center;
 }
 
-.page-header .project-name {
-  color: #228B22; /* verde */
+.project-name {
+  color: #228B22;
   margin: 0;
   font-size: 1.8rem;
   font-weight: bold;
 }
 
-/* MENU ORIZZONTALE */
 .top-nav {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
+  gap: 30px;
   background-color: #fff;
   border-top: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
   padding: 15px 10px;
-  gap: 25px;
   box-sizing: border-box;
+  flex-wrap: wrap;
 }
 
 .top-nav a {
-  color: #228B22; /* verde */
+  color: #228B22;
   font-weight: 600;
   text-decoration: none;
-  padding: 10px 18px;
+  padding: 10px 20px;
   border-radius: 6px;
   background-color: #f9f9f9;
   box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
@@ -45,7 +43,6 @@
   background-color: #e0e0e0;
 }
 
-/* CONTENUTO PRINCIPALE */
 .main-content {
   margin: 30px auto;
   max-width: 900px;
