@@ -1,54 +1,11 @@
 @import 'jekyll-theme-cayman';
 
-/* Sidebar fissa a sinistra */
-.sidebar-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 200px;
-  height: 100vh;
-  background-color: #ffffff;
-  padding-top: 100px;
-  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-  z-index: 10;
-}
-
-.sidebar-nav ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-.sidebar-nav li {
-  margin: 10px 0;
-  text-align: left;
-  padding-left: 20px;
-}
-
-.sidebar-nav a {
-  text-decoration: none;
-  color: #2ecc71; /* Verde come il titolo */
-  font-weight: bold;
-  font-size: 16px;
-}
-
-.sidebar-nav a:hover {
-  text-decoration: underline;
-}
-
-/* Sposta il contenuto a destra della sidebar */
-.main-content {
-  margin-left: 220px; /* Larghezza sidebar + un po’ di spazio */
-  padding: 2rem;
-  max-width: 900px;
-}
-
-/* Header in alto, centrato */
+/* Header centrato */
 .page-header {
   text-align: center;
   background: none;
   padding: 2rem 1rem 1rem 1rem;
-  margin-top: 0;
+  margin: 0 auto;
   box-shadow: none;
 }
 
@@ -63,7 +20,46 @@
   color: #333;
 }
 
-/* Rimuovi il footer */
+/* Sidebar NON fissa: sotto la header */
+.sidebar-nav {
+  float: left;
+  width: 200px;
+  background-color: #ffffff;
+  padding: 1rem 0;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+  min-height: calc(100vh - 150px); /* Altezza pagina meno header */
+}
+
+.sidebar-nav ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.sidebar-nav li {
+  margin: 10px 0;
+  padding-left: 20px;
+}
+
+.sidebar-nav a {
+  text-decoration: none;
+  color: #2ecc71;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.sidebar-nav a:hover {
+  text-decoration: underline;
+}
+
+/* Contenuto a destra della sidebar */
+.main-content {
+  margin-left: 220px;
+  padding: 2rem;
+  max-width: 900px;
+}
+
+/* Footer nascosto */
 .site-footer {
   display: none;
 }
