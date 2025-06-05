@@ -7,27 +7,25 @@
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 </head>
 <body>
+  <div class="sidebar">
+    <a href="/">Home</a>
+    <a href="/topic">Topic</a>
+    <a href="/methodology">Methodology</a>
+    <a href="/queries">Queries</a>
+    <a href="/llms">LLMs</a>
+    <a href="/report">Report</a>
+    <a href="/challenges">Challenges</a>
+  </div>
 
-  <header class="page-header" role="banner">
-  <h1 class="project-name">{{ page.title | default: site.title | default: site.github.repository_name }}</h1>
-</header>
+  <div class="main-content">
+    <header class="page-header" role="banner">
+      <h1 class="project-name">{{ page.title | default: site.title | default: site.github.repository_name }}</h1>
+    </header>
 
-  <div class="layout">
-    <nav class="sidebar-nav">
-      <a href="/">Home</a>
-      <a href="/topic">Topic</a>
-      <a href="/methodology">Methodology</a>
-      <a href="/queries">Queries</a>
-      <a href="/llms">LLMs</a>
-      <a href="/report">Report</a>
-      <a href="/challenges">Challenges</a>
-    </nav>
-
-    <main class="main-content" role="main">
+    <main id="content" role="main">
       {{ content }}
     </main>
   </div>
-
 </body>
 </html>
 
