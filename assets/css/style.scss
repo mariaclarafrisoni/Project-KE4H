@@ -1,68 +1,68 @@
 @import 'jekyll-theme-cayman';
 
-/* === HEADER === */
-.page-header {
-  text-align: center;
-  padding: 2rem 1rem;
-  background: none;
-  box-shadow: none;
-  margin-left: 200px; /* Per allinearlo con il contenuto */
+/* Imposta il layout principale come flex verticale */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
 }
 
-.project-name {
-  font-size: 2.5rem;
-  color: #2ecc71;
-  margin-bottom: 0.5rem;
+/* Contenitore orizzontale: sidebar + contenuto */
+.page-wrapper {
+  display: flex;
+  flex-direction: row;
 }
 
-.project-tagline {
-  font-size: 1.2rem;
-  color: #333;
-}
-
-/* === SIDEBAR === */
+/* Sidebar */
 .sidebar-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
   width: 200px;
-  height: 100vh;
-  background-color: #ffffff;
-  padding-top: 150px; /* Spazio per la header */
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
-  z-index: 10;
+  background-color: white;
+  padding: 20px;
+  position: relative;
+  border-right: 1px solid #ccc;
 }
 
 .sidebar-nav ul {
-  list-style-type: none;
+  list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.sidebar-nav li {
-  margin: 10px 0;
-  padding-left: 20px;
-}
-
-.sidebar-nav a {
+.sidebar-nav ul li a {
+  display: block;
+  color: green;
   text-decoration: none;
-  color: #2ecc71;
-  font-weight: bold;
-  font-size: 16px;
+  padding: 10px 0;
 }
 
-.sidebar-nav a:hover {
+.sidebar-nav ul li a:hover {
   text-decoration: underline;
 }
 
-/* === CONTENUTO === */
+/* Contenuto principale */
 .main-content {
-  margin-left: 200px; /* spazio per sidebar */
-  padding: 2rem;
-  max-width: 1000px;
+  flex: 1;
+  padding: 40px;
 }
 
-/* === FOOTER === */
+/* Header */
+.page-header {
+  padding: 20px;
+  text-align: center;
+  background-color: #f2f2f2;
+}
+
+.page-header h1 {
+  margin: 0;
+  font-size: 2.5em;
+  color: green;
+}
+
+.page-header h2 {
+  margin-top: 10px;
+  color: #666;
+}
+
+/* Footer nascosto */
 .site-footer {
   display: none;
 }
