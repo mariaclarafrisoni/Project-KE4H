@@ -1,12 +1,12 @@
 @import 'jekyll-theme-cayman';
 
-/* Header centrato */
+/* === HEADER === */
 .page-header {
   text-align: center;
+  padding: 2rem 1rem;
   background: none;
-  padding: 2rem 1rem 1rem 1rem;
-  margin: 0 auto;
   box-shadow: none;
+  margin-left: 200px; /* Per allinearlo con il contenuto */
 }
 
 .project-name {
@@ -20,19 +20,22 @@
   color: #333;
 }
 
-/* Sidebar NON fissa: sotto la header */
+/* === SIDEBAR === */
 .sidebar-nav {
-  float: left;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 200px;
+  height: 100vh;
   background-color: #ffffff;
-  padding: 1rem 0;
+  padding-top: 150px; /* Spazio per la header */
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
-  min-height: calc(100vh - 150px); /* Altezza pagina meno header */
+  z-index: 10;
 }
 
 .sidebar-nav ul {
   list-style-type: none;
-  padding-left: 0;
+  padding: 0;
   margin: 0;
 }
 
@@ -52,14 +55,14 @@
   text-decoration: underline;
 }
 
-/* Contenuto a destra della sidebar */
+/* === CONTENUTO === */
 .main-content {
-  margin-left: 220px;
+  margin-left: 200px; /* spazio per sidebar */
   padding: 2rem;
-  max-width: 900px;
+  max-width: 1000px;
 }
 
-/* Footer nascosto */
+/* === FOOTER === */
 .site-footer {
   display: none;
 }
