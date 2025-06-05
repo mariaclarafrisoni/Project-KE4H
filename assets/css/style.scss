@@ -1,50 +1,10 @@
 @import 'jekyll-theme-cayman';
 
-/* Imposta il layout principale come flex verticale */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
 }
 
-/* Contenitore orizzontale: sidebar + contenuto */
-.page-wrapper {
-  display: flex;
-  flex-direction: row;
-}
-
-/* Sidebar */
-.sidebar-nav {
-  width: 200px;
-  background-color: white;
-  padding: 20px;
-  position: relative;
-  border-right: 1px solid #ccc;
-}
-
-.sidebar-nav ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.sidebar-nav ul li a {
-  display: block;
-  color: green;
-  text-decoration: none;
-  padding: 10px 0;
-}
-
-.sidebar-nav ul li a:hover {
-  text-decoration: underline;
-}
-
-/* Contenuto principale */
-.main-content {
-  flex: 1;
-  padding: 40px;
-}
-
-/* Header */
 .page-header {
   padding: 20px;
   text-align: center;
@@ -62,7 +22,34 @@ body {
   color: #666;
 }
 
-/* Footer nascosto */
-.site-footer {
-  display: none;
+.layout {
+  display: flex;
+  flex-direction: row;
 }
+
+.sidebar-nav {
+  width: 200px;
+  background-color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-right: 1px solid #ccc;
+}
+
+.sidebar-nav a {
+  color: green;
+  text-decoration: none;
+  padding: 10px 0;
+  width: 100%;
+}
+
+.sidebar-nav a:hover {
+  text-decoration: underline;
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 40px;
+}
+
