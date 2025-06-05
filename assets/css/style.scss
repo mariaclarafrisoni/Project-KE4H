@@ -1,49 +1,39 @@
 ---
 ---
-.page-layout {
+/* Layout principale: menu a sinistra e contenuto a destra */
+.main-content {
   display: flex;
-  gap: 30px; /* spazio tra sidebar e contenuto */
-  align-items: flex-start; /* allineamento verticale */
+  max-width: 1000px; /* puoi cambiare se vuoi una larghezza diversa */
+  margin: 0 auto; /* centra la pagina */
+  gap: 20px; /* spazio tra menu e contenuto */
 }
 
+/* Stile della sidebar (menu) */
 .sidebar-nav {
-  width: 220px;
-  background-color: white;
-  padding: 20px;
+  width: 180px; /* larghezza del menu */
+  background-color: #fff;
   border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  font-family: "Open Sans", sans-serif;
-  position: sticky;
-  top: 100px; /* sidebar resta visibile durante lo scroll */
-  height: fit-content;
+  padding: 15px 10px;
+  margin-left: 0; /* niente margine a sinistra */
+  box-sizing: border-box;
 }
 
-.sidebar-nav ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.sidebar-nav ul li {
-  margin-bottom: 15px;
-}
-
+/* Link del menu verdi */
 .sidebar-nav ul li a {
+  color: #157878; /* verde */
   text-decoration: none;
-  color: #157878; /* verde titolo */
-  font-weight: 600;
-  font-size: 16px;
-  transition: color 0.3s ease;
+  display: block;
+  padding: 8px 0;
 }
 
 .sidebar-nav ul li a:hover {
-  color: #0f4c3f; /* verde scuro al passaggio */
+  text-decoration: underline;
 }
 
-.page-content {
-  flex-grow: 1; /* il contenuto prende tutto lo spazio rimasto */
-  max-width: 800px; /* larghezza massima contenuto */
+/* Contenuto principale */
+.content-area {
+  flex: 1;
 }
+
 
 @import 'jekyll-theme-cayman';
