@@ -1,5 +1,7 @@
 ---
 layout: default
+title: Home
+permalink: /
 ---
 
 # Unlocking Fénis: prompting the past with LLMs, enriching the present with ArCo
