@@ -7,24 +7,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
   <body>
-   <header class="page-header" role="banner">
-  <h1 class="project-name">{{ site.title }}</h1>
-</header>
+    <header class="page-header" role="banner">
+      <h1 class="project-name">{{ site.title }}</h1>
+    </header>
 
-<nav class="top-nav" role="navigation" aria-label="Main menu">
-  <a href="/">Home</a>
-  <a href="/topic">Topic</a>
-  <a href="/methodology">Methodology</a>
-  <a href="/queries">Queries</a>
-  <a href="/llms">LLMs</a>
-  <a href="/report">Report</a>
-  <a href="/challenges">Challenges</a>
-</nav>
+    <nav class="top-nav" role="navigation" aria-label="Main menu">
+      <div class="nav-container">
+        <a href="{{ '/' | relative_url }}">Home</a>
+        <a href="{{ '/topic' | relative_url }}">Topic</a>
+        <a href="{{ '/methodology' | relative_url }}">Methodology</a>
+        <a href="{{ '/queries' | relative_url }}">Queries</a>
+        <a href="{{ '/llms' | relative_url }}">LLMs</a>
+        <a href="{{ '/report' | relative_url }}">Report</a>
+        <a href="{{ '/challenges' | relative_url }}">Challenges</a>
+      </div>
+    </nav>
 
-<main id="content" class="main-content" role="main">
- {{ content }}
-</main>
-
+    <main id="content" class="main-content" role="main">
+      {{ content }}
+    </main>
   </body>
 </html>
 
