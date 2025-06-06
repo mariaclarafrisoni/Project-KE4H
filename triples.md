@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Report
+title: Triples
 ---
 
-# Report
+# Triples
 
 Qui puoi scrivere il contenuto della pagina.
