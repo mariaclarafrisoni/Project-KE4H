@@ -2,7 +2,7 @@
 layout: default
 title: Triples
 ---
-
+<div class="no-justify">
 # Triples
 
 Below are example RDF triples describing the Fénis Castle, its features, conservation status, and cultural events connected to it.
@@ -110,13 +110,14 @@ ex:ValentinesDay2025
    arco:hasStartingDate "2025-02-13"^^xsd:date ;
    arco:hasDescription "Couples are invited to celebrate Valentine’s Day with complimentary entry to Fénis Castle and other cultural sites in the region."@en ;
    arco:hasURL <https://www.visitmonterosa.com> .
+   
 ## Fenis Castle as Architectural Heritage and Construction Event
 
-PREFIX arco: <https://w3id.org/arco/ontology/arco/>
-PREFIX core: <https://w3id.org/arco/ontology/core/>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX ex: <http://example.org/>
+@prefix arco: <https://w3id.org/arco/ontology/arco/>
+@prefix core: <https://w3id.org/arco/ontology/core/>
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+@prefix ex: <http://example.org/>
 
 ex:Fenis_Castle a arco:ArchitecturalOrLandscapeHeritage ;
     rdfs:label "Fenis Castle" .
@@ -124,5 +125,5 @@ ex:Fenis_Castle a arco:ArchitecturalOrLandscapeHeritage ;
 ex:Fenis_Castle_construction a arco:CreationEvent ;
     core:performedOn ex:Fenis_Castle ;
     arco:startDate "1340"^^xsd:gYear .
-
+</div>
 
