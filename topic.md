@@ -5,7 +5,7 @@ title: Topic
 
 # Topic
 
-The project centers on the **[Castle of Fénis]**(https://en.wikipedia.org/wiki/F%C3%A9nis_Castle), one of the best-preserved examples of medieval residential architecture in the Aosta Valley, Italy. Unlike defensive fortresses, Fénis was built by the [Challant family](https://it.wikipedia.org/wiki/Challant_(famiglia)) in the 14th century as a prestigious home, known for its symmetrical towers, internal courtyard, wooden elements, and a remarkable cycle of [frescoes](https://en.wikipedia.org/wiki/Fresco) that reflect medieval symbolism and cultural values.
+The project centers on the **[Castle of Fénis](https://en.wikipedia.org/wiki/F%C3%A9nis_Castle)**, one of the best-preserved examples of medieval residential architecture in the Aosta Valley, Italy. Unlike defensive fortresses, Fénis was built by the [Challant family](https://it.wikipedia.org/wiki/Challant_(famiglia)) in the 14th century as a prestigious home, known for its symmetrical towers, internal courtyard, wooden elements, and a remarkable cycle of [frescoes](https://en.wikipedia.org/wiki/Fresco) that reflect medieval symbolism and cultural values.
 
 Fénis Castle is already represented in [ArCo](https://w3id.org/arco), the Italian [knowledge graph](https://en.wikipedia.org/wiki/Knowledge_graph) for cultural heritage. ArCo provides [RDF](https://en.wikipedia.org/wiki/Resource_Description_Framework) descriptions of cultural entities using ontologies based on [OWL](https://en.wikipedia.org/wiki/Web_Ontology_Language), enabling machine-readable knowledge extraction. However, the current semantic description of the castle could be expanded with additional data to enhance its accessibility, interpretation, and value in educational or digital settings.
 
