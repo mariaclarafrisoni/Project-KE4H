@@ -2,24 +2,22 @@
 ---
 @import 'jekyll-theme-cayman';
 
-/* HEADER */
 .page-header {
   width: 100%;
-  background-color: #007acc; /* azzurro */
+  background-color: #007acc; 
   padding: 20px 0;
   text-align: center;
 }
 
 .project-name {
-  font-family: 'Georgia', serif; /* Puoi cambiare con qualsiasi font tu voglia */
-  font-weight: bold;             /* Grassetto */
-  text-align: center;            /* Centro orizzontale */
-  font-size: 2.5rem;             /* Più grande */
-  margin: 40px auto;             /* Distanza sopra e sotto */
-  color: white;                  /* Se vuoi mantenere il font bianco */
+  font-family: 'Georgia', serif; 
+  font-weight: bold;            
+  text-align: center;           
+  font-size: 2.5rem;             
+  margin: 40px auto;             
+  color: white;                  
 }
 
-/* MENU ORIZZONTALE */
 .top-nav {
   display: flex;
   justify-content: center;
@@ -44,17 +42,20 @@
   transform: scale(1.05);
 }
 
-/* CONTENUTO */
 .main-content {
   max-width: 900px;
   margin: 40px auto;
-  padding: 0 20px;
+  padding: 30px 20px;
   box-sizing: border-box;
   color: #333;
   font-family: Arial, sans-serif;
   line-height: 1.6;
   text-align: justify;
+  background-color: #e3f2fd; 
+  border-radius: 12px;        
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
 }
+
 
 
 
