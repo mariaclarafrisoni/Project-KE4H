@@ -11,10 +11,12 @@
 }
 
 .project-name {
-  color: white;
-  font-size: 2rem;
-  font-weight: bold;
-  margin: 0;
+  font-family: 'Georgia', serif; /* Puoi cambiare con qualsiasi font tu voglia */
+  font-weight: bold;             /* Grassetto */
+  text-align: center;            /* Centro orizzontale */
+  font-size: 2.5rem;             /* Più grande */
+  margin: 40px auto;             /* Distanza sopra e sotto */
+  color: white;                  /* Se vuoi mantenere il font bianco */
 }
 
 /* MENU ORIZZONTALE */
