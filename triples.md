@@ -5,8 +5,6 @@ title: Triples
 
 # Triples
 
-# Triples
-
 Below are example RDF triples describing the Fénis Castle, its features, conservation status, and cultural events connected to it.
 
 ## 1. Image Representation and Author
