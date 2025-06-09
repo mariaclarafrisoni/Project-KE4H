@@ -5,7 +5,7 @@ title: Queries
 
 # Queries
 
-This section presents a selection of the SPARQL queries used in the project to retrieve data from the MiC dataset. A full explanation of the procedure and analysis is available in the [Methodology](./methodology) section.
+This section presents the SPARQL queries used in the project to retrieve data from the [ArCo ontology](https://dati.beniculturali.it/lode/extract?lang=it&url=https://raw.githubusercontent.com/ICCD-MiBACT/ArCo/master/ArCo-release/ontologie/arco/arco.owl). A full explanation of the procedure and analysis is available in the [Methodology](./methodology) section.
 
 ### 1. Searching for castles in the dataset
 
