@@ -5,11 +5,12 @@ title: Triples
 
 # Triples
 
-Below are example RDF triples describing the Fénis Castle, its features, conservation status, and cultural events connected to it.
+Below are example RDF triples describing the Fénis Castle, its features, conservation status, and cultural events connected to it. For a detailed explanation of the process behind the creation and use of these triples, please refer to the [Methodology section](#methodology).
 
 
 ## 1. Image Representation and Author
 
+```ttl
 @prefix arco: <https://w3id.org/arco/ontology/arco/> .
 
 @prefix a-cd: <https://w3id.org/arco/ontology/context-description/> .
@@ -40,10 +41,11 @@ ex:Hagai_Agmon_Snir
    a foaf:Agent ;
    
    foaf:name "Hagai Agmon-Snir"@en .
-   
+``` 
 
 ## 2. Conservation Status and Interventions
 
+```ttl
 @prefix arco: <https://w3id.org/arco/ontology/arco/> .
 
 @prefix cis: <http://dati.beniculturali.it/cis/> .
@@ -92,10 +94,11 @@ ex:Hagai_Agmon_Snir
    a arco:Intervention ;
    
    rdfs:label "Preventive and digital conservation (1990s–present)"@en .
-   
+``` 
 
 ## 3. Cultural Events Associated with Fénis Castle
 
+```ttl
 @prefix arco: <https://w3id.org/arco/ontology/arco/> .
 
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -191,10 +194,11 @@ ex:ValentinesDay2025
    arco:hasDescription "Couples are invited to celebrate Valentine’s Day with complimentary entry to Fénis Castle and other cultural sites in the region."@en ;
    
    arco:hasURL <https://www.visitmonterosa.com> .
-   
+ ```  
    
 ## 4. Fenis Castle as Architectural Heritage and Construction Event
 
+```ttl
 @prefix arco: <https://w3id.org/arco/ontology/arco/>
 
 @prefix core: <https://w3id.org/arco/ontology/core/>
@@ -216,6 +220,6 @@ ex:Fenis_Castle_construction a arco:CreationEvent ;
     core:performedOn ex:Fenis_Castle ;
     
     arco:startDate "1340"^^xsd:gYear .
-    
+```  
 
 
