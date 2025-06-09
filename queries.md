@@ -9,6 +9,7 @@ This section presents a selection of the SPARQL queries used in the project to r
 
 ### 1. Searching for castles in the dataset
 
+```sparql
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
 PREFIX cis: <http://dati.beniculturali.it/cis/>
@@ -29,10 +30,11 @@ SELECT DISTINCT ?castello ?label WHERE {
 ORDER BY ?label
 
 LIMIT 300
-
+```
 
 ### 2. Retrieving cultural assets containing a specific keyword
 
+```sparql
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
 PREFIX arco: <https://w3id.org/arco/ontology/arco/>
@@ -49,10 +51,11 @@ WHERE {
 }
 
 LIMIT 50
-
+```
 
 ### 3. Inspecting the properties of a specific resource
 
+```sparql
 SELECT ?property ?value
 
 WHERE {
@@ -60,4 +63,4 @@ WHERE {
   <http://dati.beniculturali.it/mibact/luoghi/resource/CulturalInstituteOrSite/100827> ?property ?value
   
 }
-
+```
