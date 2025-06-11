@@ -49,7 +49,7 @@ WHERE {
 LIMIT 50
 ```
 
-![image](https://github.com/user-attachments/assets/ac3c021e-a0c0-42ac-8f5a-8026273f1433)
+![img2](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%202.png?raw=true)
 
 This query allowed us to identify all the entities associated with “Fénis” in the dataset, ultimately leading us to the official **IRI** of Castello di Fénis: http://dati.beniculturali.it/mibact/luoghi/resource/CulturalInstituteOrSite/100827
 
@@ -62,7 +62,7 @@ WHERE {
 }
 ```
 
-![image](https://github.com/user-attachments/assets/241ab1a9-d2f1-434d-946e-11ca8a4cfde0)
+![image](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%203.png?raw=true)
 
 This query enabled us to explore the complete set of information currently available about the castle in the [ArCo knowledge graph](https://dati.beniculturali.it/lode/extract?lang=it&url=https://raw.githubusercontent.com/ICCD-MiBACT/ArCo/master/ArCo-release/ontologie/arco/arco.owl), which helped us assess what data was already present and what needed to be added or updated during the enrichment phase.
 
@@ -89,13 +89,13 @@ An officially recognized image of the Colosseum is available on Wikimedia Common
 https://creativecommons.org/licenses/by/2.0/
 
 #### Chat GPT
-![image](https://github.com/user-attachments/assets/dbfbfb98-ef68-44a4-8405-6736526633d3)
-![image](https://github.com/user-attachments/assets/7f3b7bd2-75e4-4dc9-b20a-0bcb1637370a)
+![image](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%204.png?raw=true)
+![image](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%205.png?raw=true)
 
 #### Gemini
-![image](https://github.com/user-attachments/assets/2deae73e-98e7-4e09-b58e-96e37356d4d8)
-![image](https://github.com/user-attachments/assets/23b19379-a0b4-4283-8668-b8045b7d6be5)
-![image](https://github.com/user-attachments/assets/174540ea-7f32-421c-925d-7539cad0bd48)
+![image](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%206.png?raw=true)
+![image](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%207.png?raw=true)
+![image](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%208.png?raw=true)
 
 Both responses included URLs formatted as requested, accompanied by the necessary information. However, Gemini's answer was less precise, as the cited author did not match the one listed on the source page. Consequently, the **ChatGPT response** was selected for generating the <u>triples</u>.
 
@@ -142,12 +142,12 @@ ex:Hagai_Agmon_Snir
 What is the current state of conservation of Fénis Castle in Valle d'Aosta, and what restoration work has been carried out over time? Let's think about this step by step, starting with its historical condition and moving toward modern restoration efforts.
 
 #### Chat GPT
-![image](https://github.com/user-attachments/assets/bb3d15c1-9447-47d5-ae77-8f3284587854)
-![image](https://github.com/user-attachments/assets/2320ffb4-dceb-4935-8e10-518c44ca4841)
+![image](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%2011.png?raw=true)
+![image](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%2012.png?raw=true)
 
 #### Gemini
-![image](https://github.com/user-attachments/assets/03fb9e0c-4086-42f6-b44d-f68a5694712a)
-![image](https://github.com/user-attachments/assets/6855ba2d-5577-4e12-af0c-88ca19d8fbd5)
+![image](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%209.png?raw=true)
+![image](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%2010.png?raw=true)
 
 Both answers were accurate and provided valid information. Therefore, we decided to integrate them, supplementing any missing details. Once we had developed a comprehensive scheme encompassing the main points, we proceeded to create the triples:
 ```ttl
@@ -185,11 +185,11 @@ Both answers were accurate and provided valid information. Therefore, we decided
 Please provide a list of any upcoming or current events taking place at Fénis Castle in Valle d'Aosta, Italy. Include event names, dates, brief descriptions and official websites if available.
 
 #### Chat GPT
-![image](https://github.com/user-attachments/assets/d49093e2-ebac-45eb-a3d7-518a2d3dc983)
-![image](https://github.com/user-attachments/assets/d4c2f3e6-3093-418a-bc5e-bac106524aa1)
+![image](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%2014.png?raw=true)
+![image](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%2015.png?raw=true)
 
 #### Gemini
-![image](https://github.com/user-attachments/assets/8cdb963a-06d2-4ea2-a9ab-169a31726fd0)
+![image](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%2013.png?raw=true)
 
 After verifying the reliability of both answers, we integrated them along with the missing information and created a triple that includes the events, dates, a brief description, and the official website:
 ```ttl
