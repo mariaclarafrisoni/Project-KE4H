@@ -30,7 +30,7 @@ LIMIT 300
 We then compared the list displayed in the image below with the manually curated list of well-known castles to identify overlaps and gaps.
 
 
-<img src="![image](https://github.com/user-attachments/assets/b3c11938-1c69-46e5-8d40-a59f1eace610)" alt="Descrizione" style="max-width: 100%; height: auto; display: block; margin: 20px auto;">
+![image](https://github.com/user-attachments/assets/b3c11938-1c69-46e5-8d40-a59f1eace610)
 
 
 ## Step 2: Selecting a Case Study – Castello di Fénis
