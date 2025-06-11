@@ -30,7 +30,7 @@ LIMIT 300
 We then compared the list displayed in the image below with the manually curated list of well-known castles to identify overlaps and gaps.
 
 
-![img1]([Img 1.png](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/Img%201.png?raw=true))
+![img1](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/Img%201.png?raw=true)
 
 ## Step 2: Selecting a Case Study – Castello di Fénis
 Among the castles that appeared in both the online and SPARQL-generated lists, we selected the [**Castello di Fénis**](https://en.wikipedia.org/wiki/F%C3%A9nis_Castle), located in the [Aosta Valley](https://en.wikipedia.org/wiki/Aosta_Valley). This castle was chosen because it appeared to have <u>incomplete or missing data</u> within the ArCo dataset, making it a suitable case study for enrichment. 
