@@ -28,6 +28,7 @@ LIMIT 300
 ```
 
 We then compared the list displayed in the image below with the manually curated list of well-known castles to identify overlaps and gaps.
+
 ![image](https://github.com/user-attachments/assets/b3c11938-1c69-46e5-8d40-a59f1eace610)
 
 ## Step 2: Selecting a Case Study – Castello di Fénis
@@ -66,7 +67,7 @@ This query enabled us to explore the complete set of information currently avail
 
 ## Step 3: Enrichment Using Large Language Models (LLMs)
 
-1.	Prompt for the Image: **Few-shot**
+#### 1. Prompt for the Image: **Few-shot**
    
 Please provide the URL (file .jpg, .png, etc.) for the official image of Fénis Castle in Valle d'Aosta. If there is no official photo, please indicate if there are any relevant historical images, recent photographs, or artistic representations. Please also provide the exact source of the image.
 
@@ -135,7 +136,7 @@ ex:Hagai_Agmon_Snir
     foaf:name "Hagai Agmon-Snir"@en .
 ```
 
-2.	Prompt for State of conservation and restoration phase: **chain of thought**
+#### 2. Prompt for State of conservation and restoration phase: **chain of thought**
    
 What is the current state of conservation of Fénis Castle in Valle d'Aosta, and what restoration work has been carried out over time? Let's think about this step by step, starting with its historical condition and moving toward modern restoration efforts.
 
@@ -178,7 +179,7 @@ Both answers were accurate and provided valid information. Therefore, we decided
     rdfs:label "Preventive and digital conservation (1990s–present)"@en
 ```
 
-3.	Prompt for Cultural Events: **zero-shot**
+#### 3. Prompt for Cultural Events: **zero-shot**
    
 Please provide a list of any upcoming or current events taking place at Fénis Castle in Valle d'Aosta, Italy. Include event names, dates, brief descriptions and official websites if available.
 
