@@ -11,7 +11,7 @@ We decided to focus on **castles** because they represent a fascinating and well
 
 ## Step 1: Identifying Relevant Cultural Heritage Sites
 To begin, we compiled a reference list by searching the internet for the [“10 most beautiful castles in Italy”](https://www.travel365.it/classifica-castelli-piu-belli-italia.htm). This list provided a baseline for comparison with existing data in the [ArCo knowledge graph](https://dati.beniculturali.it/lode/extract?lang=it&url=https://raw.githubusercontent.com/ICCD-MiBACT/ArCo/master/ArCo-release/ontologie/arco/arco.owl).
-Next, we executed a **SPARQL query** to retrieve all entries classified as castles in Italy from the ArCo dataset. The query filtered cultural institutes or sites whose label contained the term <u>“castello”</u> (castle):
+Next, we executed a **SPARQL query** to retrieve all entries classified as castles in Italy from the ArCo dataset. The query filtered cultural institutes or sites whose label contained the term "<u>castello</u>" (castle):
 
 ```sparql
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -49,8 +49,8 @@ LIMIT 50
 
 ![image](https://github.com/user-attachments/assets/ac3c021e-a0c0-42ac-8f5a-8026273f1433)
 
-This query allowed us to identify all the entities associated with “Fénis” in the dataset, ultimately leading us to the official **IRI** of Castello di Fénis:
-http://dati.beniculturali.it/mibact/luoghi/resource/CulturalInstituteOrSite/100827
+This query allowed us to identify all the entities associated with “Fénis” in the dataset, ultimately leading us to the official **IRI** of Castello di Fénis: http://dati.beniculturali.it/mibact/luoghi/resource/CulturalInstituteOrSite/100827
+
 Once the official IRI was identified, we constructed the following **SPARQL query** to extract all properties and values directly linked to this specific resource:
 
 ```sparql
@@ -63,6 +63,190 @@ WHERE {
 ![image](https://github.com/user-attachments/assets/241ab1a9-d2f1-434d-946e-11ca8a4cfde0)
 
 This query enabled us to explore the complete set of information currently available about the castle in the ArCo knowledge graph, which helped us assess what data was already present and what needed to be added or updated during the enrichment phase.
+
+## Step 3: Enrichment Using Large Language Models (LLMs)
+
+1.	Prompt for the Image: **Few-shot**
+Please provide the URL (file .jpg, .png, etc.) for the official image of Fénis Castle in Valle d'Aosta. If there is no official photo, please indicate if there are any relevant historical images, recent photographs, or artistic representations. Please also provide the exact source of the image.
+Example:
+An officially recognized image of the Colosseum is available on Wikimedia Commons.
+•	URL: https://commons.wikimedia.org/wiki/File:Colosseum_-Rome-Italy(16800139540).jpg
+•	Title: Colosseum - Rome - Italy (16800139540).jpg
+•	Author: Sam Valadi
+•	Source: https://commons.wikimedia.org/wiki/File:Colosseum_-Rome-Italy(16800139540).jpg
+•	License: Creative Commons Attribution 2.0 Generic (CC BY 2.0)
+https://creativecommons.org/licenses/by/2.0/
+
+### Chat GPT
+![image](https://github.com/user-attachments/assets/dbfbfb98-ef68-44a4-8405-6736526633d3)
+![image](https://github.com/user-attachments/assets/7f3b7bd2-75e4-4dc9-b20a-0bcb1637370a)
+
+### Gemini
+![image](https://github.com/user-attachments/assets/2deae73e-98e7-4e09-b58e-96e37356d4d8)
+![image](https://github.com/user-attachments/assets/23b19379-a0b4-4283-8668-b8045b7d6be5)
+![image](https://github.com/user-attachments/assets/174540ea-7f32-421c-925d-7539cad0bd48)
+
+Both responses included URLs formatted as requested, accompanied by the necessary information. However, Gemini's answer was less precise, as the cited author did not match the one listed on the source page. Consequently, the **ChatGPT response** was selected for generating the <u>triples</u>.
+
+Now that we have:
+•	Subject: cis:CulturalInstituteOrSite_100827 – the Castello di Fénis in the Italian cultural heritage linked data system.
+•	Predicate: arco:hasRepresentative – the ArCo property used to indicate an official or representative image.
+•	Object: https://commons.wikimedia.org/wiki/File:CastelloDiF%C3%A9nisJuly292023_06.jpg -  The URL of the image hosted on Wikimedia Commons, used as an IRI
+
+We can proceed with the triple:
+```ttl
+@prefix arco: <https://w3id.org/arco/ontology/arco/> .
+@prefix cis: <https://dati.beniculturali.it/cis/> .
+
+cis:CulturalInstituteOrSite_100827
+    arco:hasRepresentative <https://upload.wikimedia.org/wikipedia/commons/1/1f/CastelloDiF%C3%A9nisJuly292023_06.jpg>
+```
+
+Or if we want to add here also the author of the image and the title:
+```ttl
+@prefix arco: <https://w3id.org/arco/ontology/arco/> .
+@prefix a-cd: <https://w3id.org/arco/ontology/context-description/> .
+@prefix cis: <https://dati.beniculturali.it/cis/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ex: <https://example.org/agent/> .
+
+cis:CulturalInstituteOrSite_100827
+    arco:hasRepresentative <https://upload.wikimedia.org/wikipedia/commons/1/1f/CastelloDiF%C3%A9nisJuly292023_06.jpg> .
+
+<https://upload.wikimedia.org/wikipedia/commons/1/1f/CastelloDiF%C3%A9nisJuly292023_06.jpg>
+    rdfs:label "Castello di Fénis - July 29, 2023"@it ;
+    a-cd:hasAuthor ex:Hagai_Agmon_Snir .
+
+ex:Hagai_Agmon_Snir
+    a foaf:Agent ;
+    foaf:name "Hagai Agmon-Snir"@en .
+```
+
+2.	Prompt for State of conservation and restoration phase: **chain of thought**
+What is the current state of conservation of Fénis Castle in Valle d'Aosta, and what restoration work has been carried out over time? Let's think about this step by step, starting with its historical condition and moving toward modern restoration efforts.
+
+### Chat GPT
+![image](https://github.com/user-attachments/assets/bb3d15c1-9447-47d5-ae77-8f3284587854)
+![image](https://github.com/user-attachments/assets/2320ffb4-dceb-4935-8e10-518c44ca4841)
+
+### Gemini
+![image](https://github.com/user-attachments/assets/03fb9e0c-4086-42f6-b44d-f68a5694712a)
+![image](https://github.com/user-attachments/assets/6855ba2d-5577-4e12-af0c-88ca19d8fbd5)
+
+Both answers were accurate and provided valid information. Therefore, we decided to integrate them, supplementing any missing details. Once we had developed a comprehensive scheme encompassing the main points, we proceeded to create the triples:
+```ttl
+@prefix arco: <https://w3id.org/arco/ontology/arco/> .
+@prefix cis: <http://dati.beniculturali.it/cis/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://dati.beniculturali.it/luoghi/resource/CulturalInstituteOrSite/100827>
+    a cis:CulturalInstituteOrSite ;
+    rdfs:label "Fénis Castle"@en ;
+    arco:hasConservationStatus <http://example.org/resource/ConservationStatus/Excellent> ;
+    arco:hasIntervention <http://example.org/resource/Intervention/Fenis1895> ,
+                         <http://example.org/resource/Intervention/Fenis1935> ,
+                         <http://example.org/resource/Intervention/Fenis1990> .
+
+<http://example.org/resource/ConservationStatus/Excellent>
+    a arco:ConservationStatus ;
+    rdfs:label "Excellent"@en .
+
+<http://example.org/resource/Intervention/Fenis1895>
+    a arco:Intervention ;
+    rdfs:label "Restoration by Alfredo d’Andrade (1895–1920)"@en .
+
+<http://example.org/resource/Intervention/Fenis1935>
+    a arco:Intervention ;
+    rdfs:label "Restoration by De Vecchi and Mesturino (1935–1942)"@en .
+
+<http://example.org/resource/Intervention/Fenis1990>
+    a arco:Intervention ;
+    rdfs:label "Preventive and digital conservation (1990s–present)"@en
+```
+
+3.	Prompt for Cultural Events: **zero-shot**
+Please provide a list of any upcoming or current events taking place at Fénis Castle in Valle d'Aosta, Italy. Include event names, dates, brief descriptions and official websites if available.
+
+### Chat GPT
+![image](https://github.com/user-attachments/assets/d49093e2-ebac-45eb-a3d7-518a2d3dc983)
+![image](https://github.com/user-attachments/assets/d4c2f3e6-3093-418a-bc5e-bac106524aa1)
+
+### Gemini
+![image](https://github.com/user-attachments/assets/8cdb963a-06d2-4ea2-a9ab-169a31726fd0)
+
+After verifying the reliability of both answers, we integrated them along with the missing information and created a triple that includes the events, dates, a brief description, and the official website:
+```ttl
+@prefix arco: <https://w3id.org/arco/ontology/arco/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ex: <http://example.org/resource/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix cis: <http://dati.beniculturali.it/cis/> .
+
+<http://dati.beniculturali.it/luoghi/resource/CulturalInstituteOrSite/100827>
+    rdf:type cis:CulturalInstituteOrSite , arco:CulturalProperty ;
+    arco:hasCulturalEvent ex:CastelloInFiera2025 ,
+                          ex:VerticalFenis2025 ,
+                          ex:MothersDay2025 ,
+                          ex:MedievalFestival2025 ,
+                          ex:ValentinesDay2025 .
+
+ex:CastelloInFiera2025
+    a arco:CulturalEvent ;
+    rdfs:label "Castello in Fiera 2025"@en ;
+    arco:hasStartingDate "2025-04-05"^^xsd:date ;
+    arco:hasEndingDate "2025-04-06"^^xsd:date ;
+    arco:hasDescription "A lively medieval-themed fair set in the grounds of Fénis Castle, featuring artisan stalls, traditional food tastings, falconry exhibitions, equestrian shows, street performers, and creative workshops for children."@en ;
+    arco:hasURL <https://www.lovevda.it> .
+
+ex:VerticalFenis2025
+    a arco:CulturalEvent ;
+    rdfs:label "Vertical di Fénis 2025"@en ;
+    arco:hasStartingDate "2025-05-01"^^xsd:date ;
+    arco:hasDescription "The 8th edition of this challenging mountain running event, also serving as the Italian FIDAL National Championship for vertical kilometer races. It draws elite athletes from across the country."@en ;
+    arco:hasURL <https://www.rendezvous-vda.it> .
+
+ex:MothersDay2025
+    a arco:CulturalEvent ;
+    rdfs:label "Mother’s Day – Free Entry 2025"@en ;
+    arco:hasStartingDate "2025-05-12"^^xsd:date ;
+    arco:hasDescription "To celebrate Mother's Day, all mothers visiting with their children are granted free admission to Fénis Castle and other regional heritage sites."@en ;
+    arco:hasURL <https://www.visitmonterosa.com> .
+
+ex:MedievalFestival2025
+    a arco:CulturalEvent ;
+    rdfs:label "Festa Medievale – Torneo Le Cors dou Heralt 2025"@en ;
+    arco:hasStartingDate "2025-07-26"^^xsd:date ;
+    arco:hasEndingDate "2025-07-27"^^xsd:date ;
+    arco:hasDescription "A grand medieval reenactment festival hosted in Fénis, featuring historical tournaments, costumed parades, artisan demonstrations, fire performances, a medieval banquet, and guided night tours of the castle."@en ;
+    arco:hasURL <https://www.gruppostoricodifenis.it> .
+
+ex:ValentinesDay2025
+    a arco:CulturalEvent ;
+    rdfs:label "Valentine’s Day – Free Entry 2025"@en ;
+    arco:hasStartingDate "2025-02-13"^^xsd:date ;
+    arco:hasDescription "Couples are invited to celebrate Valentine’s Day with complimentary entry to Fénis Castle and other cultural sites in the region."@en ;
+    arco:hasURL <https://www.visitmonterosa.com> .
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
