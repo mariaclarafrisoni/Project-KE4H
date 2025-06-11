@@ -68,7 +68,7 @@ This query enabled us to explore the complete set of information currently avail
 
 ## Step 3: Enrichment Using Large Language Models (LLMs)
 
-For more details on LLMs and prompting techniques, see the [LLMs.md](llms.md) page.
+For more details on LLMs and prompting techniques, see the [LLMs](llms.md) page.
 
 ### Prompt for the Image: Few-shot
    
@@ -248,7 +248,7 @@ ex:ValentinesDay2025
     arco:hasURL <https://www.visitmonterosa.com> .
 ```
 
-For further details on the SPARQL queries used and the RDF triples generated during the project, please refer to the [queries.md](queries.md) and [triples.md](triples.md) pages.
+For further details on the SPARQL queries used and the RDF triples generated during the project, please refer to the [queries](queries.md) and [triples](triples.md) pages.
 
 
 
