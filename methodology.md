@@ -68,7 +68,7 @@ This query enabled us to explore the complete set of information currently avail
 
 ## Step 3: Enrichment Using Large Language Models (LLMs)
 
-#### Prompt for the Image: **Few-shot**
+### Prompt for the Image: Few-shot
    
 Please provide the URL (file .jpg, .png, etc.) for the official image of Fénis Castle in Valle d'Aosta. If there is no official photo, please indicate if there are any relevant historical images, recent photographs, or artistic representations. Please also provide the exact source of the image.
 
@@ -88,11 +88,11 @@ An officially recognized image of the Colosseum is available on Wikimedia Common
 
 https://creativecommons.org/licenses/by/2.0/
 
-### Chat GPT
+#### Chat GPT
 ![image](https://github.com/user-attachments/assets/dbfbfb98-ef68-44a4-8405-6736526633d3)
 ![image](https://github.com/user-attachments/assets/7f3b7bd2-75e4-4dc9-b20a-0bcb1637370a)
 
-### Gemini
+#### Gemini
 ![image](https://github.com/user-attachments/assets/2deae73e-98e7-4e09-b58e-96e37356d4d8)
 ![image](https://github.com/user-attachments/assets/23b19379-a0b4-4283-8668-b8045b7d6be5)
 ![image](https://github.com/user-attachments/assets/174540ea-7f32-421c-925d-7539cad0bd48)
@@ -137,15 +137,15 @@ ex:Hagai_Agmon_Snir
     foaf:name "Hagai Agmon-Snir"@en .
 ```
 
-#### Prompt for State of conservation and restoration phase: **chain of thought**
+### Prompt for State of conservation and restoration phase: chain of thought
    
 What is the current state of conservation of Fénis Castle in Valle d'Aosta, and what restoration work has been carried out over time? Let's think about this step by step, starting with its historical condition and moving toward modern restoration efforts.
 
-### Chat GPT
+#### Chat GPT
 ![image](https://github.com/user-attachments/assets/bb3d15c1-9447-47d5-ae77-8f3284587854)
 ![image](https://github.com/user-attachments/assets/2320ffb4-dceb-4935-8e10-518c44ca4841)
 
-### Gemini
+#### Gemini
 ![image](https://github.com/user-attachments/assets/03fb9e0c-4086-42f6-b44d-f68a5694712a)
 ![image](https://github.com/user-attachments/assets/6855ba2d-5577-4e12-af0c-88ca19d8fbd5)
 
@@ -180,15 +180,15 @@ Both answers were accurate and provided valid information. Therefore, we decided
     rdfs:label "Preventive and digital conservation (1990s–present)"@en
 ```
 
-#### Prompt for Cultural Events: **zero-shot**
+### Prompt for Cultural Events: zero-shot
    
 Please provide a list of any upcoming or current events taking place at Fénis Castle in Valle d'Aosta, Italy. Include event names, dates, brief descriptions and official websites if available.
 
-### Chat GPT
+#### Chat GPT
 ![image](https://github.com/user-attachments/assets/d49093e2-ebac-45eb-a3d7-518a2d3dc983)
 ![image](https://github.com/user-attachments/assets/d4c2f3e6-3093-418a-bc5e-bac106524aa1)
 
-### Gemini
+#### Gemini
 ![image](https://github.com/user-attachments/assets/8cdb963a-06d2-4ea2-a9ab-169a31726fd0)
 
 After verifying the reliability of both answers, we integrated them along with the missing information and created a triple that includes the events, dates, a brief description, and the official website:
