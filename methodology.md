@@ -68,7 +68,7 @@ This query enabled us to explore the complete set of information currently avail
 
 ## Step 3: Enrichment Using Large Language Models (LLMs)
 
-For more details on LLMs and prompting techniques, see the [LLMs](llms.md) page.
+For more details on LLMs and prompting techniques, see the [LLMs](LLMs.md) page.
 
 ### Prompt for the Image: Few-shot
    
