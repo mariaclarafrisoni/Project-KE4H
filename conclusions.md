@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Challenges
+title: Conclusions
 ---
 
-# Challenges
+# Conclusions
 
 Qui puoi scrivere il contenuto della pagina.
