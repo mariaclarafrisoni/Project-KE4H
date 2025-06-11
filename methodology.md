@@ -68,6 +68,8 @@ This query enabled us to explore the complete set of information currently avail
 
 ## Step 3: Enrichment Using Large Language Models (LLMs)
 
+For more details on LLMs and prompting techniques, see the [LLMs.md](llms.md) page.
+
 ### Prompt for the Image: Few-shot
    
 Please provide the URL (file .jpg, .png, etc.) for the official image of Fénis Castle in Valle d'Aosta. If there is no official photo, please indicate if there are any relevant historical images, recent photographs, or artistic representations. Please also provide the exact source of the image.
@@ -245,6 +247,8 @@ ex:ValentinesDay2025
     arco:hasDescription "Couples are invited to celebrate Valentine’s Day with complimentary entry to Fénis Castle and other cultural sites in the region."@en ;
     arco:hasURL <https://www.visitmonterosa.com> .
 ```
+
+For further details on the SPARQL queries used and the RDF triples generated during the project, please refer to the [queries.md](queries.md) and [triples.md](triples.md) pages.
 
 
 
