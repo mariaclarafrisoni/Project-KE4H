@@ -5,7 +5,7 @@ title: Methodology
 
 # Methodology
 
-In this section, we describe the steps taken to build our project. The main goal was to extract meaningful cultural heritage data using semantic web technologies and to enrich it through the use of [large language models (LLMs)](https://en.wikipedia.org/wiki/Large_language_model).
+In this section, we describe the steps taken to build our project. The main goal was to extract meaningful cultural heritage data using semantic web technologies and to enrich it through the use of [Large Language Models (LLMs)](https://en.wikipedia.org/wiki/Large_language_model).
 
 We decided to focus on **castles** because they represent a fascinating and well-documented part of Italian cultural heritage, and offered an interesting variety of data to explore and visualize.
 
@@ -27,7 +27,7 @@ ORDER BY ?label
 LIMIT 300
 ```
 
-We then compared this list with the manually curated list of well-known castles to identify overlaps and gaps.
+We then compared the list displayed in the image below with the manually curated list of well-known castles to identify overlaps and gaps.
 ![image](https://github.com/user-attachments/assets/b3c11938-1c69-46e5-8d40-a59f1eace610)
 
 ## Step 2: Selecting a Case Study – Castello di Fénis
@@ -62,19 +62,28 @@ WHERE {
 
 ![image](https://github.com/user-attachments/assets/241ab1a9-d2f1-434d-946e-11ca8a4cfde0)
 
-This query enabled us to explore the complete set of information currently available about the castle in the ArCo knowledge graph, which helped us assess what data was already present and what needed to be added or updated during the enrichment phase.
+This query enabled us to explore the complete set of information currently available about the castle in the [ArCo knowledge graph](https://dati.beniculturali.it/lode/extract?lang=it&url=https://raw.githubusercontent.com/ICCD-MiBACT/ArCo/master/ArCo-release/ontologie/arco/arco.owl), which helped us assess what data was already present and what needed to be added or updated during the enrichment phase.
 
 ## Step 3: Enrichment Using Large Language Models (LLMs)
 
 1.	Prompt for the Image: **Few-shot**
+   
 Please provide the URL (file .jpg, .png, etc.) for the official image of Fénis Castle in Valle d'Aosta. If there is no official photo, please indicate if there are any relevant historical images, recent photographs, or artistic representations. Please also provide the exact source of the image.
+
 Example:
+
 An officially recognized image of the Colosseum is available on Wikimedia Commons.
+
 •	URL: https://commons.wikimedia.org/wiki/File:Colosseum_-Rome-Italy(16800139540).jpg
+
 •	Title: Colosseum - Rome - Italy (16800139540).jpg
+
 •	Author: Sam Valadi
+
 •	Source: https://commons.wikimedia.org/wiki/File:Colosseum_-Rome-Italy(16800139540).jpg
+
 •	License: Creative Commons Attribution 2.0 Generic (CC BY 2.0)
+
 https://creativecommons.org/licenses/by/2.0/
 
 ### Chat GPT
@@ -89,8 +98,11 @@ https://creativecommons.org/licenses/by/2.0/
 Both responses included URLs formatted as requested, accompanied by the necessary information. However, Gemini's answer was less precise, as the cited author did not match the one listed on the source page. Consequently, the **ChatGPT response** was selected for generating the <u>triples</u>.
 
 Now that we have:
+
 •	Subject: cis:CulturalInstituteOrSite_100827 – the Castello di Fénis in the Italian cultural heritage linked data system.
+
 •	Predicate: arco:hasRepresentative – the ArCo property used to indicate an official or representative image.
+
 •	Object: https://commons.wikimedia.org/wiki/File:CastelloDiF%C3%A9nisJuly292023_06.jpg -  The URL of the image hosted on Wikimedia Commons, used as an IRI
 
 We can proceed with the triple:
@@ -124,6 +136,7 @@ ex:Hagai_Agmon_Snir
 ```
 
 2.	Prompt for State of conservation and restoration phase: **chain of thought**
+   
 What is the current state of conservation of Fénis Castle in Valle d'Aosta, and what restoration work has been carried out over time? Let's think about this step by step, starting with its historical condition and moving toward modern restoration efforts.
 
 ### Chat GPT
@@ -166,6 +179,7 @@ Both answers were accurate and provided valid information. Therefore, we decided
 ```
 
 3.	Prompt for Cultural Events: **zero-shot**
+   
 Please provide a list of any upcoming or current events taking place at Fénis Castle in Valle d'Aosta, Italy. Include event names, dates, brief descriptions and official websites if available.
 
 ### Chat GPT
