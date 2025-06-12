@@ -5,45 +5,39 @@ title: Triples
 
 # Triples
 
-Below are example RDF triples describing the Fénis Castle, its features, conservation status, and cultural events connected to it. For a detailed explanation of the process behind the creation and use of these triples, please refer to the [Methodology section](#methodology).
+Below are example RDF triples describing the Fénis Castle, its features, conservation status, and cultural events connected to it. For a detailed explanation of the process behind the creation and use of these triples, please refer to the [Methodology](#methodology) section.
 
-
-## 1. Image Representation and Author
+## 1. Construction Date
 
 ```ttl
+@prefix ex: <https://example.org/resource/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:castle-of-fenis 
+    a <https://w3id.org/arco/ontology/arco/ArchitecturalHeritage> ;
+    rdfs:label "Castello di Fénis"@it ;
+    ex:builtIn "1320-01-01"^^xsd:date .
+```
+## 2. Commissioner
+
+```ttl
+@prefix ex: <https://example.org/resource/> .
 @prefix arco: <https://w3id.org/arco/ontology/arco/> .
-
-@prefix a-cd: <https://w3id.org/arco/ontology/context-description/> .
-
-@prefix cis: <https://dati.beniculturali.it/cis/> .
-
+@prefix l0: <https://w3id.org/italia/onto/l0/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+ex:castle-of-fenis a arco:ArchitecturalHeritage ;
+arco:hasCommissioning [
+a arco:Commissioning ;
+arco:hasAgent ex:aymon-of-challant
+] .
 
-@prefix ex: <https://example.org/agent/> .
+ex:aymon-of-challant a l0:Agent ;
+rdfs:label "Aymon of Challant"@en .
+```
 
-
-cis:CulturalInstituteOrSite_100827
-
-   arco:hasRepresentative <https://upload.wikimedia.org/wikipedia/commons/1/1f/CastelloDiF%C3%A9nisJuly292023_06.jpg> .
-   
-
-<https://upload.wikimedia.org/wikipedia/commons/1/1f/CastelloDiF%C3%A9nisJuly292023_06.jpg>
-
-   rdfs:label "Fénis Castle - July 29, 2023"@en ;
-   
-   a-cd:hasAuthor ex:Hagai_Agmon_Snir .
-   
-
-ex:Hagai_Agmon_Snir
-
-   a foaf:Agent ;
-   
-   foaf:name "Hagai Agmon-Snir"@en .
-``` 
-
-## 2. Conservation Status and Interventions
+## 3. Conservation Status and Interventions
 
 ```ttl
 @prefix arco: <https://w3id.org/arco/ontology/arco/> .
@@ -96,7 +90,43 @@ ex:Hagai_Agmon_Snir
    rdfs:label "Preventive and digital conservation (1990s–present)"@en .
 ``` 
 
-## 3. Cultural Events Associated with Fénis Castle
+## 4. Image Representation and Author
+
+```ttl
+@prefix arco: <https://w3id.org/arco/ontology/arco/> .
+
+@prefix a-cd: <https://w3id.org/arco/ontology/context-description/> .
+
+@prefix cis: <https://dati.beniculturali.it/cis/> .
+
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+@prefix ex: <https://example.org/agent/> .
+
+
+cis:CulturalInstituteOrSite_100827
+
+   arco:hasRepresentative <https://upload.wikimedia.org/wikipedia/commons/1/1f/CastelloDiF%C3%A9nisJuly292023_06.jpg> .
+   
+
+<https://upload.wikimedia.org/wikipedia/commons/1/1f/CastelloDiF%C3%A9nisJuly292023_06.jpg>
+
+   rdfs:label "Fénis Castle - July 29, 2023"@en ;
+   
+   a-cd:hasAuthor ex:Hagai_Agmon_Snir .
+   
+
+ex:Hagai_Agmon_Snir
+
+   a foaf:Agent ;
+   
+   foaf:name "Hagai Agmon-Snir"@en .
+``` 
+
+
+## 5. Cultural Events Associated with Fénis Castle
 
 ```ttl
 @prefix arco: <https://w3id.org/arco/ontology/arco/> .
@@ -194,32 +224,6 @@ ex:ValentinesDay2025
    arco:hasDescription "Couples are invited to celebrate Valentine’s Day with complimentary entry to Fénis Castle and other cultural sites in the region."@en ;
    
    arco:hasURL <https://www.visitmonterosa.com> .
- ```  
-   
-## 4. Fenis Castle as Architectural Heritage and Construction Event
-
-```ttl
-@prefix arco: <https://w3id.org/arco/ontology/arco/>
-
-@prefix core: <https://w3id.org/arco/ontology/core/>
-
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#>
-
-@prefix ex: <http://example.org/>
-
-
-ex:Fenis_Castle a arco:ArchitecturalOrLandscapeHeritage ;
-
-    rdfs:label "Fenis Castle" .
-    
-
-ex:Fenis_Castle_construction a arco:CreationEvent ;
-
-    core:performedOn ex:Fenis_Castle ;
-    
-    arco:startDate "1340"^^xsd:gYear .
-```  
+ ```
 
 
