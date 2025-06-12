@@ -40,7 +40,7 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX arco: <https://w3id.org/arco/ontology/arco/>
 
 
-SELECT ?bene ?nome
+SELECT DISTINCT ?bene ?nome
 
 WHERE {
 
@@ -56,7 +56,7 @@ LIMIT 50
 ### 3. Inspecting the properties of the Fénis Castle
 
 ```sparql
-SELECT ?property ?value
+SELECT DISTINCT ?property ?value
 
 WHERE {
 
@@ -124,7 +124,7 @@ LIMIT 10
 PREFIX arco: <https://w3id.org/arco/ontology/arco/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-SELECT ?status ?statusLabel WHERE {
+SELECT DISTINCT ?status ?statusLabel WHERE {
   <http://dati.beniculturali.it/cis/resource/CulturalInstituteOrSite/100827> arco:hasConservationStatus ?status .
   
   OPTIONAL {
@@ -170,7 +170,7 @@ WHERE {
 PREFIX arco: <https://w3id.org/arco/ontology/arco/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-SELECT ?event ?label WHERE {
+SELECT DISTINCT ?event ?label WHERE {
   <http://dati.beniculturali.it/cis/resource/CulturalInstituteOrSite/100827> arco:hasCulturalEvent ?event .
 
   ?event rdfs:label ?label .
