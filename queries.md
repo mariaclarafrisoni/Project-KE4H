@@ -32,7 +32,7 @@ ORDER BY ?label
 LIMIT 300
 ```
 
-### 2. Retrieving cultural assets containing a specific keyword
+### 2. Retrieving cultural assets containing a specific keyword (Fénis)
 
 ```sparql
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -53,7 +53,7 @@ WHERE {
 LIMIT 50
 ```
 
-### 3. Inspecting the properties of a specific resource
+### 3. Inspecting the properties of the Fénis Castle
 
 ```sparql
 SELECT ?property ?value
@@ -64,3 +64,61 @@ WHERE {
   
 }
 ```
+
+### 4. Check for creation date of the Fénis Castle
+
+```sparql
+PREFIX arco: &lt;https://w3id.org/arco/ontology/arco/&gt;
+PREFIX core: &lt;https://w3id.org/arco/ontology/core/&gt;
+PREFIX cis: &lt;http://dati.beniculturali.it/cis/&gt;
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+PREFIX ti: &lt;https://w3id.org/arco/ontology/time/&gt;
+PREFIX l0: &lt;https://w3id.org/italia/onto/l0/&gt;
+
+SELECT DISTINCT ?culturalProperty ?label ?startDate
+WHERE {
+?culturalProperty a arco:CulturalProperty ;
+rdfs:label ?label ;
+l0:hasTime ?time .
+FILTER(CONTAINS(LCASE(STR(?label)), &quot;fenis&quot;))
+?time a ti:TimeInterval ;
+ti:hasBeginning ?startDateEntity .
+?startDateEntity ti:inXSDDate ?startDate .
+}
+LIMIT 10
+```
+
+### 5. Check for the commissioner of the Fénis Castle
+
+```sparql
+PREFIX arco: &lt;https://w3id.org/arco/ontology/arco/&gt;
+PREFIX l0: &lt;https://w3id.org/italia/onto/l0/&gt;
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+
+SELECT DISTINCT ?culturalProperty ?label ?agentLabel ?roleLabel
+WHERE {
+?culturalProperty a arco:CulturalProperty ;
+rdfs:label ?label .
+FILTER(REGEX(LCASE(STR(?label)), &quot;fenis&quot;))
+{
+?culturalProperty arco:hasAgentRole ?agentRole .
+}
+UNION
+{
+?culturalProperty arco:hasCommissioning ?agentRole .
+}
+?agentRole arco:hasAgent ?agent .
+OPTIONAL { ?agent rdfs:label ?agentLabel . }
+
+OPTIONAL {
+?agentRole arco:role ?role .
+OPTIONAL { ?role rdfs:label ?roleLabel . }
+}
+FILTER(REGEX(LCASE(STR(?roleLabel)), &quot;builder|commissioner&quot;))
+}
+ORDER BY ?agentLabel
+LIMIT 10
+```
+
+
+### 
