@@ -51,7 +51,9 @@ LIMIT 50
 
 ![img2](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%202.png?raw=true)
 
-This query allowed us to identify all the entities associated with “Fénis” in the dataset, ultimately leading us to the official **IRI** of Castello di Fénis: http://dati.beniculturali.it/mibact/luoghi/resource/CulturalInstituteOrSite/100827
+This query allowed us to identify all the entities associated with “Fénis” in the dataset, ultimately leading us to the official **IRI** of Castello di Fénis:
+
+http://dati.beniculturali.it/mibact/luoghi/resource/CulturalInstituteOrSite/100827
 
 Once the official IRI was identified, we constructed the following **SPARQL query** to extract all properties and values directly linked to this specific resource, helping us understand what data was already present and what needed to be added:
 
