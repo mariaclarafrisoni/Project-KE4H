@@ -181,7 +181,7 @@ Who built the Castello di Fénis in Aosta Valley?
 
 ![image](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%2024.png?raw=true)
 
-Both answers are effective and true. But **Chat GPT** was more precise in giving us the exact name of the commissioner of the castle, that <u>Aymon of Challant</u>, its patron and commissioner. That’s the answer we immediately found when googling ["who commissioned the construction of the Fenis castle?"](https://www.google.com/search?q=who+commissioned+the+construction+of+the+Fenis+castle%3F&oq=who+commissioned+the+construction+of+the+Fenis+castle%3F&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQIRigATIHCAIQIRigATIHCAMQIRigATIHCAQQIRigATIHCAUQIRigAdIBBzk0MWowajSoAgCwAgA&sourceid=chrome&ie=UTF-8)
+Both answers are effective and true. But **Chat GPT** was more precise in giving us the exact name of the commissioner of the castle, that is <u>Aymon of Challant</u>, its patron and commissioner. That’s the answer we immediately found when googling ["who commissioned the construction of the Fenis castle?"](https://www.google.com/search?q=who+commissioned+the+construction+of+the+Fenis+castle%3F&oq=who+commissioned+the+construction+of+the+Fenis+castle%3F&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQIRigATIHCAIQIRigATIHCAMQIRigATIHCAQQIRigATIHCAUQIRigAdIBBzk0MWowajSoAgCwAgA&sourceid=chrome&ie=UTF-8)
 
 Thefeore, we asked Chat GPT to create the RDF triple for the entity: 
 ```ttl
