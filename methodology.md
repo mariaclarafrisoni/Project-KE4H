@@ -53,7 +53,7 @@ LIMIT 50
 
 This query allowed us to identify all the entities associated with “Fénis” in the dataset, ultimately leading us to the official **IRI** of Castello di Fénis: http://dati.beniculturali.it/mibact/luoghi/resource/CulturalInstituteOrSite/100827
 
-Once the official IRI was identified, we constructed the following **SPARQL query** to extract all properties and values directly linked to this specific resource:
+Once the official IRI was identified, we constructed the following **SPARQL query** to extract all properties and values directly linked to this specific resource, helping us understand what data was already present and what needed to be added:
 
 ```sparql
 SELECT ?property ?value
@@ -66,11 +66,186 @@ WHERE {
 
 This query enabled us to explore the complete set of information currently available about the castle in the [ArCo knowledge graph](https://dati.beniculturali.it/lode/extract?lang=it&url=https://raw.githubusercontent.com/ICCD-MiBACT/ArCo/master/ArCo-release/ontologie/arco/arco.owl), which helped us assess what data was already present and what needed to be added or updated during the enrichment phase.
 
-## Step 3: Enrichment Using Large Language Models (LLMs)
+## Step 3: Identifying Missing Information
 
-For more details on LLMs and prompting techniques, see the [LLMs](LLMs.md) page.
+After analyzing the available data, we found that key information was missing from the ArCo ontology. In particular:
 
-### Prompt for the Image: Few-shot
+- The date of construction of the castle
+
+- The commissioner
+
+- The state of conservation and restoration history
+
+- Any official representative image
+
+- Upcoming or current cultural events
+
+To ensure this information was indeed missing, we executed specific **SPARQL queries** for the date of creation:
+
+```sparql
+PREFIX arco: &lt;https://w3id.org/arco/ontology/arco/&gt;
+PREFIX core: &lt;https://w3id.org/arco/ontology/core/&gt;
+PREFIX cis: &lt;http://dati.beniculturali.it/cis/&gt;
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+PREFIX ti: &lt;https://w3id.org/arco/ontology/time/&gt;
+PREFIX l0: &lt;https://w3id.org/italia/onto/l0/&gt;
+
+SELECT DISTINCT ?culturalProperty ?label ?startDate
+WHERE {
+?culturalProperty a arco:CulturalProperty ;
+rdfs:label ?label ;
+l0:hasTime ?time .
+FILTER(CONTAINS(LCASE(STR(?label)), &quot;fenis&quot;))
+?time a ti:TimeInterval ;
+ti:hasBeginning ?startDateEntity .
+?startDateEntity ti:inXSDDate ?startDate .
+}
+LIMIT 10
+```
+![image](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%2016.png?raw=true)
+
+And for the founder:
+```sparql
+PREFIX arco: &lt;https://w3id.org/arco/ontology/arco/&gt;
+PREFIX l0: &lt;https://w3id.org/italia/onto/l0/&gt;
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+
+SELECT DISTINCT ?culturalProperty ?label ?agentLabel ?roleLabel
+WHERE {
+?culturalProperty a arco:CulturalProperty ;
+rdfs:label ?label .
+FILTER(REGEX(LCASE(STR(?label)), &quot;fenis&quot;))
+{
+?culturalProperty arco:hasAgentRole ?agentRole .
+}
+UNION
+{
+?culturalProperty arco:hasCommissioning ?agentRole .
+}
+?agentRole arco:hasAgent ?agent .
+OPTIONAL { ?agent rdfs:label ?agentLabel . }
+
+OPTIONAL {
+?agentRole arco:role ?role .
+OPTIONAL { ?role rdfs:label ?roleLabel . }
+}
+FILTER(REGEX(LCASE(STR(?roleLabel)), &quot;builder|commissioner&quot;))
+}
+ORDER BY ?agentLabel
+LIMIT 10
+```
+![image](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%2017.png?raw=true)
+
+## Step 4: Enrichment Using Large Language Models (LLMs)
+
+To enrich the dataset, we prompted two LLMs - [Chat GPT](https://chatgpt.com/?model=auto) and [Gemini](https://gemini.google.com/app?hl=it) - using all three prompting techniques (zero-shot, few-shot and chain of thought). For more details on LLMs and prompting techniques, see the [LLMs](LLMs.md) page.
+
+### Prompt: Date of Construction (Zero-shot)
+
+What year was the castle of Fénis in Italy built?
+
+#### Chat GPT
+
+![image](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%2018.png?raw=true)
+![image](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%2019.png?raw=true)
+
+#### Gemini
+
+![image](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%2020.png?raw=true)
+
+But this answer was too long.
+
+![image](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%2021.png?raw=true)
+![image](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%2022.png?raw=true)
+
+Both the LLMs are effective. However, according to [Wikipedia](https://en.wikipedia.org/wiki/F%C3%A9nis_Castle), the first construction works started in 1320, while Gemini says 1340. Therefore, 1320 can be assumed as the date of construction of the castle. That is why we chose to go on with **Chat GPT** for the creation of the triple since it better conveys this kind of precise information as a date of construction is:
+
+```ttl
+@prefix ex: <https://example.org/resource/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:castle-of-fenis 
+    a <https://w3id.org/arco/ontology/arco/ArchitecturalHeritage> ;
+    rdfs:label "Castello di Fénis"@it ;
+    ex:builtIn "1320-01-01"^^xsd:date .
+```
+
+### Prompt: Commissioner (Few-shot)
+
+Who built the Castello di Fénis in Aosta Valley?
+
+#### Chat GPT
+
+![image](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%2023.png?raw=true)
+
+#### Gemini
+
+![image](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%2024.png?raw=true)
+
+Both answers are effective and true. But **Chat GPT** was more precise in giving us the exact name of the commissioner of the castle, that <u>Aymon of Challant</u>, its patron and commissioner. That’s the answer we immediately found when googling ["who commissioned the construction of the Fenis castle?"](https://www.google.com/search?q=who+commissioned+the+construction+of+the+Fenis+castle%3F&oq=who+commissioned+the+construction+of+the+Fenis+castle%3F&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQIRigATIHCAIQIRigATIHCAMQIRigATIHCAQQIRigATIHCAUQIRigAdIBBzk0MWowajSoAgCwAgA&sourceid=chrome&ie=UTF-8)
+
+Thefeore, we asked Chat GPT to create the RDF triple for the entity: 
+```ttl
+@prefix ex: <https://example.org/resource/> .
+@prefix arco: <https://w3id.org/arco/ontology/arco/> .
+@prefix l0: <https://w3id.org/italia/onto/l0/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+ex:castle-of-fenis a arco:ArchitecturalHeritage ;
+arco:hasCommissioning [
+a arco:Commissioning ;
+arco:hasAgent ex:aymon-of-challant
+] .
+
+ex:aymon-of-challant a l0:Agent ;
+rdfs:label "Aymon of Challant"@en .
+```
+
+### Prompt: State of conservation and restoration phase (Chain of thought)
+   
+What is the current state of conservation of Fénis Castle in Valle d'Aosta, and what restoration work has been carried out over time? Let's think about this step by step, starting with its historical condition and moving toward modern restoration efforts.
+
+#### Chat GPT
+![image](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%2011.png?raw=true)
+![image](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%2012.png?raw=true)
+
+#### Gemini
+![image](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%209.png?raw=true)
+![image](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%2010.png?raw=true)
+
+Both answers were accurate and provided valid information. Therefore, we decided to integrate them, supplementing any missing details. Once we had developed a comprehensive scheme encompassing the main points, we proceeded to create the triples:
+```ttl
+@prefix arco: <https://w3id.org/arco/ontology/arco/> .
+@prefix cis: <http://dati.beniculturali.it/cis/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://dati.beniculturali.it/luoghi/resource/CulturalInstituteOrSite/100827>
+    a cis:CulturalInstituteOrSite ;
+    rdfs:label "Fénis Castle"@en ;
+    arco:hasConservationStatus <http://example.org/resource/ConservationStatus/Excellent> ;
+    arco:hasIntervention <http://example.org/resource/Intervention/Fenis1895> ,
+                         <http://example.org/resource/Intervention/Fenis1935> ,
+                         <http://example.org/resource/Intervention/Fenis1990> .
+
+<http://example.org/resource/ConservationStatus/Excellent>
+    a arco:ConservationStatus ;
+    rdfs:label "Excellent"@en .
+
+<http://example.org/resource/Intervention/Fenis1895>
+    a arco:Intervention ;
+    rdfs:label "Restoration by Alfredo d’Andrade (1895–1920)"@en .
+
+<http://example.org/resource/Intervention/Fenis1935>
+    a arco:Intervention ;
+    rdfs:label "Restoration by De Vecchi and Mesturino (1935–1942)"@en .
+
+<http://example.org/resource/Intervention/Fenis1990>
+    a arco:Intervention ;
+    rdfs:label "Preventive and digital conservation (1990s–present)"@en
+```
+
+### Prompt: Image Retrieval (Few-shot)
    
 Please provide the URL (file .jpg, .png, etc.) for the official image of Fénis Castle in Valle d'Aosta. If there is no official photo, please indicate if there are any relevant historical images, recent photographs, or artistic representations. Please also provide the exact source of the image.
 
@@ -139,50 +314,7 @@ ex:Hagai_Agmon_Snir
     foaf:name "Hagai Agmon-Snir"@en .
 ```
 
-### Prompt for State of conservation and restoration phase: chain of thought
-   
-What is the current state of conservation of Fénis Castle in Valle d'Aosta, and what restoration work has been carried out over time? Let's think about this step by step, starting with its historical condition and moving toward modern restoration efforts.
-
-#### Chat GPT
-![image](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%2011.png?raw=true)
-![image](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%2012.png?raw=true)
-
-#### Gemini
-![image](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%209.png?raw=true)
-![image](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%2010.png?raw=true)
-
-Both answers were accurate and provided valid information. Therefore, we decided to integrate them, supplementing any missing details. Once we had developed a comprehensive scheme encompassing the main points, we proceeded to create the triples:
-```ttl
-@prefix arco: <https://w3id.org/arco/ontology/arco/> .
-@prefix cis: <http://dati.beniculturali.it/cis/> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-
-<http://dati.beniculturali.it/luoghi/resource/CulturalInstituteOrSite/100827>
-    a cis:CulturalInstituteOrSite ;
-    rdfs:label "Fénis Castle"@en ;
-    arco:hasConservationStatus <http://example.org/resource/ConservationStatus/Excellent> ;
-    arco:hasIntervention <http://example.org/resource/Intervention/Fenis1895> ,
-                         <http://example.org/resource/Intervention/Fenis1935> ,
-                         <http://example.org/resource/Intervention/Fenis1990> .
-
-<http://example.org/resource/ConservationStatus/Excellent>
-    a arco:ConservationStatus ;
-    rdfs:label "Excellent"@en .
-
-<http://example.org/resource/Intervention/Fenis1895>
-    a arco:Intervention ;
-    rdfs:label "Restoration by Alfredo d’Andrade (1895–1920)"@en .
-
-<http://example.org/resource/Intervention/Fenis1935>
-    a arco:Intervention ;
-    rdfs:label "Restoration by De Vecchi and Mesturino (1935–1942)"@en .
-
-<http://example.org/resource/Intervention/Fenis1990>
-    a arco:Intervention ;
-    rdfs:label "Preventive and digital conservation (1990s–present)"@en
-```
-
-### Prompt for Cultural Events: zero-shot
+### Prompt: Cultural Events (Zero-shot)
    
 Please provide a list of any upcoming or current events taking place at Fénis Castle in Valle d'Aosta, Italy. Include event names, dates, brief descriptions and official websites if available.
 
