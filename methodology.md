@@ -41,7 +41,7 @@ To investigate the existing data about the **Castello di Fénis**, we performed 
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX arco: <https://w3id.org/arco/ontology/arco/>
 
-SELECT ?bene ?nome
+SELECT DISTINCT ?bene ?nome
 WHERE {
   ?bene rdfs:label ?nome .
   FILTER(CONTAINS(LCASE(STR(?nome)), "fenis"))
@@ -58,7 +58,7 @@ http://dati.beniculturali.it/mibact/luoghi/resource/CulturalInstituteOrSite/1008
 Once the official IRI was identified, we constructed the following **SPARQL query** to extract all properties and values directly linked to this specific resource, helping us understand what data was already present and what needed to be added:
 
 ```sparql
-SELECT ?property ?value
+SELECT DISTINCT ?property ?value
 WHERE {
   <http://dati.beniculturali.it/mibact/luoghi/resource/CulturalInstituteOrSite/100827> ?property ?value
 }
@@ -152,10 +152,6 @@ What year was the castle of Fénis in Italy built?
 ![image](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%2019.png?raw=true)
 
 #### Gemini
-
-![image](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%2020.png?raw=true)
-
-But this answer was too long.
 
 ![image](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%2021.png?raw=true)
 ![image](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%2022.png?raw=true)
