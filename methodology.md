@@ -106,7 +106,7 @@ LIMIT 10
 ```
 ![image](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%2016.png?raw=true)
 
-And for the founder:
+For the commissioner:
 ```sparql
 PREFIX arco: &lt;https://w3id.org/arco/ontology/arco/&gt;
 PREFIX l0: &lt;https://w3id.org/italia/onto/l0/&gt;
@@ -137,6 +137,74 @@ ORDER BY ?agentLabel
 LIMIT 10
 ```
 ![image](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%2017.png?raw=true)
+
+For the conservation status:
+```sparql
+PREFIX arco: <https://w3id.org/arco/ontology/arco/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT DISTINCT ?status ?statusLabel WHERE {
+  <http://dati.beniculturali.it/cis/resource/CulturalInstituteOrSite/100827> arco:hasConservationStatus ?status .
+  
+  OPTIONAL {
+    ?status rdfs:label ?statusLabel .
+  }
+}
+```
+![image](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%2025.png?raw=true)
+
+For the image:
+```sparql
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX arco: <https://w3id.org/arco/ontology/arco/>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX l0: <https://w3id.org/italia/onto/l0/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT DISTINCT ?image ?representation ?title
+WHERE {
+  VALUES ?castello {
+    <http://dati.beniculturali.it/mibact/luoghi/resource/CulturalInstituteOrSite/100827>
+  }
+
+  OPTIONAL {
+    ?castello foaf:depiction ?image .
+  }
+  OPTIONAL {
+    ?castello arco:hasRepresentation ?representation .
+    OPTIONAL { ?representation foaf:depiction ?image . }
+    OPTIONAL { ?representation dc:title ?title . }
+  }
+  OPTIONAL {
+    ?castello arco:hasDigitalRepresentation ?representation .
+    OPTIONAL { ?representation foaf:depiction ?image . }
+    OPTIONAL { ?representation dc:title ?title . }
+  }
+}
+```
+![image](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%2026.png?raw=true)
+
+And for the cultural events:
+```sparql
+PREFIX arco: <https://w3id.org/arco/ontology/arco/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT DISTINCT ?event ?label WHERE {
+  # Fénis Castle as cultural site
+  <http://dati.beniculturali.it/cis/resource/CulturalInstituteOrSite/100827> arco:hasCulturalEvent ?event .
+
+  # Get the label (name) of each event
+  ?event rdfs:label ?label .
+
+  # Use regex to find events with "festival", "day", or "fiera" in the name (optional filter)
+  FILTER (REGEX(?label, "festival|day|fiera", "i"))
+}
+ORDER BY ?label
+LIMIT 20
+```
+![image](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%2027.png?raw=true)
 
 ## Step 4: Enrichment Using Large Language Models (LLMs)
 
