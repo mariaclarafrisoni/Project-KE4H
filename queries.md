@@ -119,7 +119,7 @@ ORDER BY ?agentLabel
 LIMIT 10
 ```
 
-## 6. Check for the conservation status of the Fénis Castle
+### 6. Check for the conservation status of the Fénis Castle
 ```sparql
 PREFIX arco: <https://w3id.org/arco/ontology/arco/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -133,7 +133,7 @@ SELECT DISTINCT ?status ?statusLabel WHERE {
 }
 ```
 
-## 7. Check for the image of the Fénis Castle
+### 7. Check for the image of the Fénis Castle
 ```sparql
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX arco: <https://w3id.org/arco/ontology/arco/>
@@ -165,7 +165,7 @@ WHERE {
 }
 ```
 
-## 8. Check for cultural events at the Fénis Castle
+### 8. Check for cultural events at the Fénis Castle
 ```sparql
 PREFIX arco: <https://w3id.org/arco/ontology/arco/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
