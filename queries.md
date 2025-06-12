@@ -68,22 +68,22 @@ WHERE {
 ### 4. Check for creation date of the Fénis Castle
 
 ```sparql
-PREFIX arco: &lt;https://w3id.org/arco/ontology/arco/&gt;
-PREFIX core: &lt;https://w3id.org/arco/ontology/core/&gt;
-PREFIX cis: &lt;http://dati.beniculturali.it/cis/&gt;
-PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
-PREFIX ti: &lt;https://w3id.org/arco/ontology/time/&gt;
-PREFIX l0: &lt;https://w3id.org/italia/onto/l0/&gt;
+PREFIX arco: <https://w3id.org/arco/ontology/arco/>
+PREFIX core: <https://w3id.org/arco/ontology/core/>
+PREFIX cis: <http://dati.beniculturali.it/cis/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX ti: <https://w3id.org/arco/ontology/time/>
+PREFIX l0: <https://w3id.org/italia/onto/l0/>
 
 SELECT DISTINCT ?culturalProperty ?label ?startDate
 WHERE {
-?culturalProperty a arco:CulturalProperty ;
-rdfs:label ?label ;
-l0:hasTime ?time .
-FILTER(CONTAINS(LCASE(STR(?label)), &quot;fenis&quot;))
-?time a ti:TimeInterval ;
-ti:hasBeginning ?startDateEntity .
-?startDateEntity ti:inXSDDate ?startDate .
+  ?culturalProperty a arco:CulturalProperty ;
+                    rdfs:label ?label ;
+                    l0:hasTime ?time . 
+  FILTER(CONTAINS(LCASE(STR(?label)), "fenis"))
+  ?time a ti:TimeInterval ;
+        ti:hasBeginning ?startDateEntity .
+  ?startDateEntity ti:inXSDDate ?startDate .
 }
 LIMIT 10
 ```
@@ -91,34 +91,30 @@ LIMIT 10
 ### 5. Check for the commissioner of the Fénis Castle
 
 ```sparql
-PREFIX arco: &lt;https://w3id.org/arco/ontology/arco/&gt;
-PREFIX l0: &lt;https://w3id.org/italia/onto/l0/&gt;
-PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+PREFIX arco: <https://w3id.org/arco/ontology/arco/>
+PREFIX l0: <https://w3id.org/italia/onto/l0/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
 SELECT DISTINCT ?culturalProperty ?label ?agentLabel ?roleLabel
 WHERE {
-?culturalProperty a arco:CulturalProperty ;
-rdfs:label ?label .
-FILTER(REGEX(LCASE(STR(?label)), &quot;fenis&quot;))
-{
-?culturalProperty arco:hasAgentRole ?agentRole .
-}
-UNION
-{
-?culturalProperty arco:hasCommissioning ?agentRole .
-}
-?agentRole arco:hasAgent ?agent .
-OPTIONAL { ?agent rdfs:label ?agentLabel . }
-
-OPTIONAL {
-?agentRole arco:role ?role .
-OPTIONAL { ?role rdfs:label ?roleLabel . }
-}
-FILTER(REGEX(LCASE(STR(?roleLabel)), &quot;builder|commissioner&quot;))
+  ?culturalProperty a arco:CulturalProperty ;
+                    rdfs:label ?label .
+  FILTER(REGEX(LCASE(STR(?label)), "fenis"))
+  {
+    ?culturalProperty arco:hasAgentRole ?agentRole .
+  }
+  UNION
+  {
+    ?culturalProperty arco:hasCommissioning ?agentRole .
+  }
+  ?agentRole arco:hasAgent ?agent .
+  OPTIONAL { ?agent rdfs:label ?agentLabel . }
+  OPTIONAL { 
+    ?agentRole arco:role ?role .
+    OPTIONAL { ?role rdfs:label ?roleLabel . }
+  }
+  FILTER(REGEX(LCASE(STR(?roleLabel)), "builder|commissioner"))
 }
 ORDER BY ?agentLabel
 LIMIT 10
 ```
-
-
-### 
