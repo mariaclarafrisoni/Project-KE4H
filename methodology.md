@@ -191,13 +191,10 @@ PREFIX arco: <https://w3id.org/arco/ontology/arco/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
 SELECT DISTINCT ?event ?label WHERE {
-  # Fénis Castle as cultural site
   <http://dati.beniculturali.it/cis/resource/CulturalInstituteOrSite/100827> arco:hasCulturalEvent ?event .
 
-  # Get the label (name) of each event
   ?event rdfs:label ?label .
 
-  # Use regex to find events with "festival", "day", or "fiera" in the name (optional filter)
   FILTER (REGEX(?label, "festival|day|fiera", "i"))
 }
 ORDER BY ?label
