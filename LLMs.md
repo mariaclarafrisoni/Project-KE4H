@@ -111,3 +111,5 @@ Both LLMs returned plausible results. After fact-checking, we combined the answe
 ### Gemini
 ![image](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%2013.png?raw=true)
 
+
+All in all, both [Chat GPT](https://chatgpt.com/?model=auto) and [Gemini](https://gemini.google.com/app?hl=it) performed well and were effective, but **Chat GPT** proved to be the most accurate.
