@@ -106,6 +106,8 @@ LIMIT 10
 ```
 ![image](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%2016.png?raw=true)
 
+The results showed blank spaces.
+
 For the commissioner:
 ```sparql
 PREFIX arco: <https://w3id.org/arco/ontology/arco/>
@@ -137,6 +139,8 @@ LIMIT 10
 ```
 ![image](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%2017.png?raw=true)
 
+The results showed blank spaces.
+
 For the conservation status:
 ```sparql
 PREFIX arco: <https://w3id.org/arco/ontology/arco/>
@@ -151,6 +155,8 @@ SELECT DISTINCT ?status ?statusLabel WHERE {
 }
 ```
 ![image](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%2025.png?raw=true)
+
+The results showed blank spaces.
 
 For the image:
 ```sparql
@@ -185,6 +191,8 @@ WHERE {
 ```
 ![image](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%2026.png?raw=true)
 
+The results showed blank spaces.
+
 And for the cultural events:
 ```sparql
 PREFIX arco: <https://w3id.org/arco/ontology/arco/>
@@ -201,6 +209,8 @@ ORDER BY ?label
 LIMIT 20
 ```
 ![image](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%2027.png?raw=true)
+
+All the results showed blank spaces, meaning that information is missing in the Knowledge Graph.
 
 ## Step 4: Enrichment Using Large Language Models (LLMs)
 
