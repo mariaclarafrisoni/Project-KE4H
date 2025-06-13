@@ -72,15 +72,15 @@ This query enabled us to explore the complete set of information currently avail
 
 After analyzing the available data, we found that key information was missing from the ArCo ontology. In particular:
 
-- <span style="background-color:#FFFFE0; padding:2px 4px; border-radius:4px;">The date of construction of the castle</span>
+- <span style="background-color:#FCF55F; padding:2px 4px; border-radius:4px;">The date of construction of the castle</span>
 
-- <span style="background-color:#FFFFE0; padding:2px 4px; border-radius:4px;">The commissioner</span>
+- <span style="background-color:#FCF55F; padding:2px 4px; border-radius:4px;">The commissioner</span>
 
-- <span style="background-color:#FFFFE0; padding:2px 4px; border-radius:4px;">The state of conservation and restoration history</span>
+- <span style="background-color:#FCF55F; padding:2px 4px; border-radius:4px;">The state of conservation and restoration history</span>
 
-- <span style="background-color:#FFFFE0; padding:2px 4px; border-radius:4px;">Any official representative image</span>
+- <span style="background-color:#FCF55F; padding:2px 4px; border-radius:4px;">Any official representative image</span>
 
-- <span style="background-color:#FFFFE0; padding:2px 4px; border-radius:4px;">Upcoming or current cultural events</span>
+- <span style="background-color:#FCF55F; padding:2px 4px; border-radius:4px;">Upcoming or current cultural events</span>
 
 To ensure this information was indeed missing, we executed specific **SPARQL queries** for the date of creation:
 
