@@ -286,7 +286,7 @@ What is the current state of conservation of Fénis Castle in Valle d'Aosta, and
 ![image](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%209.png?raw=true)
 ![image](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%2010.png?raw=true)
 
-Both answers were accurate and provided valid information. Therefore, we decided to integrate them, supplementing any missing details. Once we had developed a comprehensive scheme encompassing the main points, we proceeded to create the [RDF triples](https://en.wikipedia.org/wiki/Semantic_triple):
+Both answers were accurate and provided valid information. Therefore, we decided to **integrate them**, supplementing any missing details. Once we had developed a comprehensive scheme encompassing the main points, we proceeded to create the [RDF triples](https://en.wikipedia.org/wiki/Semantic_triple):
 ```ttl
 @prefix arco: <https://w3id.org/arco/ontology/arco/> .
 @prefix cis: <http://dati.beniculturali.it/cis/> .
@@ -397,7 +397,7 @@ Please provide a list of any upcoming or current events taking place at Fénis C
 #### Gemini
 ![image](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%2013.png?raw=true)
 
-After verifying the reliability of both answers, we integrated them along with the missing information and created a [triple](https://en.wikipedia.org/wiki/Semantic_triple) that includes the events, dates, a brief description, and the official website:
+After verifying the reliability of both answers, we **integrated them** along with the missing information and created a [triple](https://en.wikipedia.org/wiki/Semantic_triple) that includes the events, dates, a brief description, and the official website:
 ```ttl
 @prefix arco: <https://w3id.org/arco/ontology/arco/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
