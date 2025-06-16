@@ -5,7 +5,7 @@ title: Triples
 
 # Triples
 
-Below are example RDF triples describing the Fénis Castle, its features, conservation status, and cultural events connected to it. For a detailed explanation of the process behind the creation and use of these triples, please refer to the [Methodology](#methodology) section.
+Below are example [RDF triples](https://en.wikipedia.org/wiki/Semantic_triple) describing the [Fénis Castle](https://en.wikipedia.org/wiki/F%C3%A9nis_Castle), its features, conservation status, and cultural events connected to it. For a detailed explanation of the process behind the creation and use of these triples, please refer to the [Methodology](#methodology) section.
 
 ## 1. Construction Date
 
