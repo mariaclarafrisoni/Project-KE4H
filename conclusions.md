@@ -5,7 +5,7 @@ title: Conclusions
 
 # Conclusions
 
-This project provided valuable insights into the modeling and enrichment of cultural heritage data using the ArCo ontology and Linked Open Data principles. The key conclusion we can draw from this project is that working with AI chatbots can significantly support the handling of complex and structured tasks, such as generating SPARQL queries and RDF triples. Throughout its development, we encountered several <u>challenges</u> that shaped our process and helped us grow both technically and methodologically:
+This project provided valuable insights into the modeling and enrichment of [cultural heritage](https://en.wikipedia.org/wiki/Cultural_heritage) data using the [ArCo ontology](https://dati.beniculturali.it/lode/extract?lang=en&url=https://raw.githubusercontent.com/ICCD-MiBACT/ArCo/master/ArCo-release/ontologie/arco/arco.owl) and [Linked Open Data](https://en.wikipedia.org/wiki/Linked_data) principles. The key conclusion we can draw from this project is that working with **AI chatbots** can significantly support the handling of complex and structured tasks, such as generating [SPARQL queries](https://en.wikipedia.org/wiki/SPARQL) and [RDF triples](https://en.wikipedia.org/wiki/Semantic_triple). Throughout its development, we encountered several <u>challenges</u> that shaped our process and helped us grow both technically and methodologically:
 
 - **Source reliability**: It was necessary to identify trustworthy sources for cultural heritage data, which required time and careful evaluation to avoid inaccuracies. Ensuring the credibility of our sources was crucial to maintain the overall quality of the dataset.
 
