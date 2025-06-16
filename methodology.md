@@ -5,13 +5,13 @@ title: Methodology
 
 # Methodology
 
-In this section, we describe the steps taken to build our project. The main goal was to extract meaningful cultural heritage data using semantic web technologies and to enrich it through the use of [Large Language Models (LLMs)](https://en.wikipedia.org/wiki/Large_language_model).
+In this section, we describe the steps taken to build our project. The main goal was to extract meaningful cultural heritage data using [semantic web technologies](https://en.wikipedia.org/wiki/Semantic_technology) and to enrich it through the use of [Large Language Models (LLMs)](https://en.wikipedia.org/wiki/Large_language_model).
 
-We decided to focus on **castles** because they represent a fascinating and well-documented part of Italian cultural heritage, and offered an interesting variety of data to explore and visualize.
+We decided to focus on [**castles**](https://en.wikipedia.org/wiki/Castle) because they represent a fascinating and well-documented part of Italian cultural heritage, and offered an interesting variety of data to explore and visualize.
 
 ## Step 1: Identifying Relevant Cultural Heritage Sites
 To begin, we compiled a reference list by searching the internet for the [“10 most beautiful castles in Italy”](https://www.travel365.it/classifica-castelli-piu-belli-italia.htm). This list provided a baseline for comparison with existing data in the [ArCo knowledge graph](https://dati.beniculturali.it/lode/extract?lang=it&url=https://raw.githubusercontent.com/ICCD-MiBACT/ArCo/master/ArCo-release/ontologie/arco/arco.owl).
-Next, we executed a **SPARQL query** to retrieve all entries classified as castles in Italy from the ArCo dataset. The query filtered cultural institutes or sites whose label contained the term "<u>castello</u>" (castle):
+Next, we executed a **SPARQL query** to retrieve all entries classified as castles in Italy from the ArCo dataset. The query filtered [cultural institutes](https://en.wikipedia.org/wiki/Cultural_institution) or sites whose label contained the term "<u>castello</u>" (castle):
 
 ```sparql
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -51,7 +51,7 @@ LIMIT 50
 
 ![img2](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%202.png?raw=true)
 
-This query allowed us to identify all the entities associated with “Fénis” in the dataset, ultimately leading us to the official **IRI** of Castello di Fénis:
+This query allowed us to identify all the entities associated with “Fénis” in the dataset, ultimately leading us to the official [**IRI**](https://en.wikipedia.org/wiki/Internationalized_Resource_Identifier) of the Fénis Castle:
 
 http://dati.beniculturali.it/mibact/luoghi/resource/CulturalInstituteOrSite/100827
 
@@ -214,7 +214,7 @@ All the results showed blank spaces, meaning that information is missing in the 
 
 ## Step 4: Enrichment Using Large Language Models (LLMs)
 
-To enrich the dataset, we prompted two LLMs - [Chat GPT](https://chatgpt.com/?model=auto) and [Gemini](https://gemini.google.com/app?hl=it) - using all three prompting techniques (zero-shot, few-shot and chain of thought). For more details on LLMs and prompting techniques, see the [LLMs](LLMs.md) page.
+To enrich the dataset, we prompted two [LLMs](https://en.wikipedia.org/wiki/Large_language_model) - [Chat GPT](https://chatgpt.com/?model=auto) and [Gemini](https://gemini.google.com/app?hl=it) - using all three prompting techniques (zero-shot, few-shot and chain of thought). For more details on LLMs and prompting techniques, see the [LLMs](LLMs.md) page.
 
 ### Prompt: Date of Construction (Zero-shot)
 
@@ -230,7 +230,7 @@ What year was the castle of Fénis in Italy built?
 ![image](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%2021.png?raw=true)
 ![image](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%2022.png?raw=true)
 
-Both the LLMs are effective. However, according to [Wikipedia](https://en.wikipedia.org/wiki/F%C3%A9nis_Castle), the first construction works started in 1320, while Gemini says 1340. Therefore, 1320 can be assumed as the date of construction of the castle. That is why we chose to go on with **Chat GPT** for the creation of the triple since it better conveys this kind of precise information as a date of construction is:
+Both the LLMs are effective. However, according to [Wikipedia](https://en.wikipedia.org/wiki/F%C3%A9nis_Castle), the first construction works started in 1320, while Gemini says 1340. Therefore, 1320 can be assumed as the date of construction of the castle. That is why we chose to go on with **Chat GPT** for the creation of the [RDF triple](https://en.wikipedia.org/wiki/Semantic_triple) since it better conveys this kind of precise information as a date of construction is:
 
 ```ttl
 @prefix ex: <https://example.org/resource/> .
@@ -257,7 +257,7 @@ Who built the Castello di Fénis in Aosta Valley?
 
 Both answers are effective and true. But **Chat GPT** was more precise in giving us the exact name of the commissioner of the castle, that is <u>Aymon of Challant</u>, its patron and commissioner. That’s the answer we immediately found when googling ["who commissioned the construction of the Fenis castle?"](https://www.google.com/search?q=who+commissioned+the+construction+of+the+Fenis+castle%3F&oq=who+commissioned+the+construction+of+the+Fenis+castle%3F&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQIRigATIHCAIQIRigATIHCAMQIRigATIHCAQQIRigATIHCAUQIRigAdIBBzk0MWowajSoAgCwAgA&sourceid=chrome&ie=UTF-8)
 
-Thefeore, we asked Chat GPT to create the RDF triple for the entity: 
+Thefeore, we asked Chat GPT to create the [RDF triple](https://en.wikipedia.org/wiki/Semantic_triple) for the entity: 
 ```ttl
 @prefix ex: <https://example.org/resource/> .
 @prefix arco: <https://w3id.org/arco/ontology/arco/> .
@@ -286,7 +286,7 @@ What is the current state of conservation of Fénis Castle in Valle d'Aosta, and
 ![image](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%209.png?raw=true)
 ![image](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%2010.png?raw=true)
 
-Both answers were accurate and provided valid information. Therefore, we decided to integrate them, supplementing any missing details. Once we had developed a comprehensive scheme encompassing the main points, we proceeded to create the triples:
+Both answers were accurate and provided valid information. Therefore, we decided to integrate them, supplementing any missing details. Once we had developed a comprehensive scheme encompassing the main points, we proceeded to create the [RDF triples](https://en.wikipedia.org/wiki/Semantic_triple):
 ```ttl
 @prefix arco: <https://w3id.org/arco/ontology/arco/> .
 @prefix cis: <http://dati.beniculturali.it/cis/> .
@@ -346,7 +346,7 @@ https://creativecommons.org/licenses/by/2.0/
 ![image](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%207.png?raw=true)
 ![image](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%208.png?raw=true)
 
-Both responses included URLs formatted as requested, accompanied by the necessary information. However, Gemini's answer was less precise, as the cited author did not match the one listed on the source page. Consequently, the **ChatGPT response** was selected for generating the <u>triples</u>.
+Both responses included [URLs](https://en.wikipedia.org/wiki/URL) formatted as requested, accompanied by the necessary information. However, Gemini's answer was less precise, as the cited author did not match the one listed on the source page. Consequently, the **ChatGPT response** was selected for generating the [<u>RDF triples</u>](https://en.wikipedia.org/wiki/Semantic_triple).
 
 Now that we have:
 
@@ -397,7 +397,7 @@ Please provide a list of any upcoming or current events taking place at Fénis C
 #### Gemini
 ![image](https://github.com/mariaclarafrisoni/Project-KE4H/blob/master/img%2013.png?raw=true)
 
-After verifying the reliability of both answers, we integrated them along with the missing information and created a triple that includes the events, dates, a brief description, and the official website:
+After verifying the reliability of both answers, we integrated them along with the missing information and created a [triple](https://en.wikipedia.org/wiki/Semantic_triple) that includes the events, dates, a brief description, and the official website:
 ```ttl
 @prefix arco: <https://w3id.org/arco/ontology/arco/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
