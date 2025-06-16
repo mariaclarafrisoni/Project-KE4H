@@ -7,7 +7,7 @@ permalink: /llms/
 # LLMs
 
 In this section, we illustrate how we used [Large Language Models (LLMs)](https://en.wikipedia.org/wiki/Large_language_model), specifically [ChatGPT](https://chatgpt.com/?model=auto) and [Gemini](https://gemini.google.com/app?hl=it), to enrich the [knowledge graph](https://dati.beniculturali.it/lode/extract?lang=it&url=https://raw.githubusercontent.com/ICCD-MiBACT/ArCo/master/ArCo-release/ontologie/arco/arco.owl) on the [Fénis Castle](https://en.wikipedia.org/wiki/F%C3%A9nis_Castle).  
-We applied different prompting strategies depending on the type and complexity of the missing information.
+We applied different [prompting strategies](https://en.wikipedia.org/wiki/Prompt_engineering) depending on the type and complexity of the missing information.
 
 To know more about the overall process and the selection of the case study, see the [Methodology](./methodology.md) section.
 
